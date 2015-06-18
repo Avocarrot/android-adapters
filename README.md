@@ -14,33 +14,35 @@ Example project how to use Avocarrot SDK with other Ad Networks, in your Android
 ===
 
 ### Mopub
-You can use **Avocarrot** as a Network in Mopub Mediation
+You can use **Avocarrot** as a Network in Mopub Mediation.
 
 ===
 
 #### Getting Started 
+
 * Integrate with Avocarrot SDK (https://app.avocarrot.com/#/docs/getting-started/android)
-* Integrate Mopub SDK (https://github.com/mopub/mopub-android-sdk/wiki/Getting-Started)
+* Integrate with Mopub SDK (https://github.com/mopub/mopub-android-sdk/wiki/Getting-Started)
 
 ===
 
-#### Create "Avocarrot Network" in Mopub dashboard and connect with your Ad Units.
-* On Mopub dashboard select "Network" > "Add New network"
+#### Create "Avocarrot" Network in Mopub's dashboard and connect it to your Ad Units.
+
+* On Mopub dashboard select `Network`  > `Add New network`
 
 ![_networks](https://cloud.githubusercontent.com/assets/1907604/8231639/d71a256c-15c1-11e5-9d4e-d125a773f2c0.png)
 
-* Select "Custom Native Network"
+* Select `Custom Native Network`
 
 ![_add-new-network](https://cloud.githubusercontent.com/assets/1907604/8231640/d721a6ac-15c1-11e5-892e-a317787adc9e.png)
 
-* Complete fields depends on your ad unit
+* Complete the fields accordingly to the Ad unit you are using
 
 ![_setup](https://cloud.githubusercontent.com/assets/1907604/8231638/d70fbdac-15c1-11e5-92d1-09699b53cdeb.png)
 
 ===
 
 #### Interstitial
-For using Interstitial you need to fill :
+For using Interstitial you need to include the following lines of code:
 
 **Custom Event Class**
 ```java
@@ -57,7 +59,7 @@ Also you must include the [`AvocarrotInterstitialMopub`](https://github.com/Avoc
 ===
 
 #### Native
-For using Native Ad (aka List in Avocarrot Dashboard) you need to fill :
+For using Native Ad (aka `List` in Avocarrot's Dashboard) you need to include the following lines of code:
 
 **Custom Event Class**
 ```java
