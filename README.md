@@ -55,6 +55,8 @@ com.mopub.mobileads.AvocarrotInterstitialMopub
 ```
 
 You must include the [`AvocarrotInterstitialMopub`](https://github.com/Avocarrot/android-adapter/blob/master/avocarrotadapter/src/main/java/com/mopub/mobileads/AvocarrotInterstitialMopub.java) in your project.
+Select "Natural Pause" placement type in Avocarrot Dashboard.
+
 
 ===
 
@@ -72,5 +74,6 @@ com.mopub.nativeads.AvocarrotNativeMopub
 ```
 
 You must include the [`AvocarrotNativeMopub`](https://github.com/Avocarrot/android-adapter/blob/master/avocarrotadapter/src/main/java/com/mopub/nativeads/AvocarrotNativeMopub.java) in your project.
+Select "Create your own" placement type in Avocarrot Dashboard.
 
 ===
