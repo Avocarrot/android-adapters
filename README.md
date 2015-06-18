@@ -42,7 +42,9 @@ You can use **Avocarrot** as a `Network` in **Mopub's** Mediation platform.
 ===
 
 #### Interstitial
-For Interstitial Ad Units you need to include the following lines of code:
+For Interstitial Ad Units you need to :
+
+* complete the following in Mopub Dashboard:
 
 **Custom Event Class**
 ```java
@@ -54,15 +56,17 @@ com.mopub.mobileads.AvocarrotInterstitialMopub
 {"appId":"ReplaceWithYourAvocarrotAppId","placement":"ReplaceWithYourAvocarrotPlacement"}
 ```
 
-You must include the [`AvocarrotInterstitialMopub`](https://github.com/Avocarrot/android-adapter/blob/master/avocarrotadapter/src/main/java/com/mopub/mobileads/AvocarrotInterstitialMopub.java) in your project.
+* include the [`AvocarrotInterstitialMopub`](https://github.com/Avocarrot/android-adapter/blob/master/avocarrotadapter/src/main/java/com/mopub/mobileads/AvocarrotInterstitialMopub.java) in your project.
 
-Select **"Natural Pause"** placement type in Avocarrot Dashboard.
+* select **"Natural Pause"** placement type in Avocarrot Dashboard.
 
 
 ===
 
 #### Native
-For Native Ad Units (such as `List`, `Feed` in Avocarrot's Dashboard) you need to include the following lines of code:
+For Native Ad Units (such as `List`, `Feed` in Avocarrot's Dashboard) you need to :
+
+* complete the following in Mopub Dashboard:
 
 **Custom Event Class**
 ```java
@@ -74,8 +78,8 @@ com.mopub.nativeads.AvocarrotNativeMopub
 {"appId":"ReplaceWithYourAvocarrotAppId","placement":"ReplaceWithYourAvocarrotPlacement"}
 ```
 
-You must include the [`AvocarrotNativeMopub`](https://github.com/Avocarrot/android-adapter/blob/master/avocarrotadapter/src/main/java/com/mopub/nativeads/AvocarrotNativeMopub.java) in your project.
+* include the [`AvocarrotNativeMopub`](https://github.com/Avocarrot/android-adapter/blob/master/avocarrotadapter/src/main/java/com/mopub/nativeads/AvocarrotNativeMopub.java) in your project.
 
-Select **"Create your own"** placement type in Avocarrot Dashboard.
+* select **"Create your own"** placement type in Avocarrot Dashboard.
 
 ===
