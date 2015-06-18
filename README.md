@@ -21,28 +21,28 @@ You can use **Avocarrot** as a Network in Mopub Mediation.
 #### Getting Started 
 
 * Integrate with Avocarrot SDK (https://app.avocarrot.com/#/docs/getting-started/android)
-* Integrate with Mopub SDK (https://github.com/mopub/mopub-android-sdk/wiki/Getting-Started)
+* Integrate with Mopub SDK     (https://github.com/mopub/mopub-android-sdk/wiki/Getting-Started)
 
 ===
 
 #### Create "Avocarrot" Network in Mopub's dashboard and connect it to your Ad Units.
 
-* On Mopub dashboard select `Network`  > `Add New network`
+* In Mopub's dashboard select `Network`  > `Add New network`
 
 ![_networks](https://cloud.githubusercontent.com/assets/1907604/8231788/d78cf0dc-15c2-11e5-9bce-ed3e1e056325.png)
 
-* Select `Custom Native Network`
+* Then select `Custom Native Network`
 
 ![_add-new-network](https://cloud.githubusercontent.com/assets/1907604/8231640/d721a6ac-15c1-11e5-892e-a317787adc9e.png)
 
-* Complete the fields accordingly to the Ad unit you are using
+* Complete the fields accordingly to the Ad unit that you want to use
 
 ![_setup](https://cloud.githubusercontent.com/assets/1907604/8231638/d70fbdac-15c1-11e5-92d1-09699b53cdeb.png)
 
 ===
 
 #### Interstitial
-For using Interstitial you need to include the following lines of code:
+For Interstitial Ad units you need to include the following lines of code:
 
 **Custom Event Class**
 ```java
@@ -54,12 +54,12 @@ com.mopub.mobileads.AvocarrotInterstitialMopub
 {"appId":"ReplaceWithYourAvocarrotAppId","placement":"ReplaceWithYourAvocarrotPlacement"}
 ```
 
-Also you must include the [`AvocarrotInterstitialMopub`](https://github.com/Avocarrot/android-adapter/blob/master/avocarrotadapter/src/main/java/com/mopub/mobileads/AvocarrotInterstitialMopub.java) into your project.
+You must include the [`AvocarrotInterstitialMopub`](https://github.com/Avocarrot/android-adapter/blob/master/avocarrotadapter/src/main/java/com/mopub/mobileads/AvocarrotInterstitialMopub.java) in your project.
 
 ===
 
 #### Native
-For using Native Ad (aka `List` in Avocarrot's Dashboard) you need to include the following lines of code:
+For Native Ad units (such as `List`, `Feed` in Avocarrot's Dashboard) you need to include the following lines of code:
 
 **Custom Event Class**
 ```java
@@ -71,6 +71,6 @@ com.mopub.nativeads.AvocarrotNativeMopub
 {"appId":"ReplaceWithYourAvocarrotAppId","placement":"ReplaceWithYourAvocarrotPlacement"}
 ```
 
-Also you must include the [`AvocarrotNativeMopub`](https://github.com/Avocarrot/android-adapter/blob/master/avocarrotadapter/src/main/java/com/mopub/nativeads/AvocarrotNativeMopub.java) into your project.
+You must include the [`AvocarrotNativeMopub`](https://github.com/Avocarrot/android-adapter/blob/master/avocarrotadapter/src/main/java/com/mopub/nativeads/AvocarrotNativeMopub.java) in your project.
 
 ===
