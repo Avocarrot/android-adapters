@@ -44,7 +44,7 @@ You can use **Avocarrot** as a `Network` in **Mopub's** Mediation platform.
 #### Interstitial
 For Interstitial Ad Units you need to :
 
-- complete the following in Mopub Dashboard:
+- Complete the following in Mopub Dashboard:
 
 **Custom Event Class**
 ```java
@@ -76,7 +76,7 @@ com.mopub.mobileads.AvocarrotInterstitialMopub
 #### Native
 For Native Ad Units (such as `List`, `Feed` in Avocarrot's Dashboard) you need to :
 
-- complete the following in Mopub Dashboard:
+- Complete the following in Mopub Dashboard:
 
 **Custom Event Class**
 ```java
