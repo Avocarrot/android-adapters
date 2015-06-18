@@ -59,11 +59,15 @@ com.mopub.mobileads.AvocarrotInterstitialMopub
 - Include the [`AvocarrotInterstitialMopub`](https://github.com/Avocarrot/android-adapter/blob/master/avocarrotadapter/src/main/java/com/mopub/mobileads/AvocarrotInterstitialMopub.java) in your project.
 
 - Login to your dashboard and visit your **"My Apps"** tab 
+
 - If you haven't created an app click on the **"Create App"** button to create one 
+
 - Click on the **"Create Placement"** button 
+
 ![Create Placement](https://cloud.githubusercontent.com/assets/1907604/8241257/29fd09f0-1600-11e5-9493-fd3ecd319256.jpg)
 
 - Select **"Natural Pause"** placement type in Avocarrot Dashboard.
+
 ![Natural Pause](https://cloud.githubusercontent.com/assets/6909699/8232322/7328d42a-15d7-11e5-97de-e17370468f63.png)
 
 
@@ -87,12 +91,15 @@ com.mopub.nativeads.AvocarrotNativeMopub
 - Include the [`AvocarrotNativeMopub`](https://github.com/Avocarrot/android-adapter/blob/master/avocarrotadapter/src/main/java/com/mopub/nativeads/AvocarrotNativeMopub.java) in your project.
 
 - Login to your dashboard and visit your **"My Apps"** tab 
+
 - If you haven't created an app click on the **"Create App"** button to create one 
+
 - Click on the **"Create Placement"** button 
 
 ![Create Placement](https://cloud.githubusercontent.com/assets/1907604/8241257/29fd09f0-1600-11e5-9493-fd3ecd319256.jpg)
 
 - Select **"Create your own"** placement type in Avocarrot Dashboard.
+
 ![Create your own](https://cloud.githubusercontent.com/assets/6909699/8232332/7e086d9c-15d7-11e5-81ef-1878ac2fdbdc.png)
 
 ===
