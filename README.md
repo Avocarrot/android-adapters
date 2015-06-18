@@ -1,6 +1,8 @@
+<img width="300" src="https://cloud.githubusercontent.com/assets/1907604/7618436/f8c371de-f9a9-11e4-8846-772f67f53513.jpg"/>
+
+
 # android-adapter
 Example project how to use Avocarrot SDK with other Ad Networks, in your Android projects.
-
 
 ## Contents
 * [Mopub](#mopub)
@@ -24,11 +26,11 @@ You can use **Avocarrot** as a Network in Mopub Mediation
 
 ### Create "Avocarrot Network" in Mopub dashboard and connect with your Ad Units.
 * On Mopub dashboard select "Network" > "Add New network"
-![_networks](https://cloud.githubusercontent.com/assets/6909699/8229858/5feec64e-15c3-11e5-9921-7585b9f57861.png)
+![_networks](https://cloud.githubusercontent.com/assets/1907604/8231639/d71a256c-15c1-11e5-9d4e-d125a773f2c0.png)
 * Select "Custom Native Network"
-![_add-new-network](https://cloud.githubusercontent.com/assets/6909699/8229862/68b9b7ca-15c3-11e5-9e0a-76537a52734a.png)
+![_add-new-network](https://cloud.githubusercontent.com/assets/1907604/8231640/d721a6ac-15c1-11e5-892e-a317787adc9e.png)
 * Complete fields depends on your ad unit
-![_setup](https://cloud.githubusercontent.com/assets/6909699/8229864/6b65cbc6-15c3-11e5-9aa4-277aa7ecd775.png)
+![_setup](https://cloud.githubusercontent.com/assets/1907604/8231638/d70fbdac-15c1-11e5-92d1-09699b53cdeb.png)
 
 ===
 
