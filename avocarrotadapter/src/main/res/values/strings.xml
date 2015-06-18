@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Avocarrot Adapter</string>
+
+    <string name="main_title">Avocarrot Custom Adapter Examples</string>
+    <string name="mopub_intestitial_msg_loading">Loading interstitial...</string>
+    <string name="mopub_intestitial_msg_failed">Fail to load interstitial :(</string>
+    <string name="mopub_intestitial_msg_isShown">Interstitial is shown</string>
+    <string name="mopub_intestitial">Mopub | Interstitial</string>
+    <string name="mopub_native">Mopub | Native</string>
+
+    <string name="custom_adapter">Select Custom Adapter Example</string>
+    <string name="show_example">Show Example</string>
+    <string name="adapter_name">Custom Adapter Name</string>
+    <string name="adapter_source_code">Custom Adapter Source Code</string>
+
+    <string name="mopub_interstitial_ad_unit_id">47754969b69f445193851f9f06dd66af</string>
+    <string name="mopub_native_ad_unit_id">72d71a479ce94cc78f9787c3ac9a7a1f</string>
+
+</resources>

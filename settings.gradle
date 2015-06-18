@@ -1,0 +1,4 @@
+include ':avocarrotadapter'
+
+include ':mopub'
+project(':mopub').projectDir = new File(settingsDir, 'mopub/mopub-sdk')

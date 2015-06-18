@@ -1,0 +1,3 @@
+[submodule "mopub"]
+	path = mopub
+	url = https://github.com/mopub/mopub-android-sdk.git
