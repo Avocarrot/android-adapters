@@ -11,7 +11,7 @@ Example project how to use Avocarrot SDK with other Ad Networks, in your Android
 
 ===
 
-## Mopub
+### Mopub
 You can use **Avocarrot** as a Network in Mopub Mediation
 
 ===
