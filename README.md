@@ -3,11 +3,11 @@ Example project how to use Avocarrot SDK with other Ad Networks, in your Android
 
 
 ## Contents
-- [Mopub](#mopub)
-- [Getting Started](#getting-started)
-- [Setup Mopub](#create-avocarrot-network-in-mopub-dashboard-and-connect-with-your-ad-units)
-- [Interstitial](#interstitial)
-- [Native](#native)
+* [Mopub](#mopub)
+  * [Getting Started](#getting-started)
+  * [Setup Mopub](#create-avocarrot-network-in-mopub-dashboard-and-connect-with-your-ad-units)
+  * [Interstitial](#interstitial)
+  * [Native](#native)
 
 
 ## Mopub
@@ -38,6 +38,7 @@ com.mopub.mobileads.AvocarrotInterstitialMopub
 {"appId":"ReplaceWithYourAvocarrotAppId","placement":"ReplaceWithYourAvocarrotPlacement"}
 ```
 
+Also you must include the [`AvocarrotInterstitialMopub`](https://github.com/Avocarrot/android-adapter/blob/master/avocarrotadapter/src/main/java/com/mopub/mobileads/AvocarrotInterstitialMopub.java) into your project.
 
 #### Native
 For using Native Ad (aka List in Avocarrot Dashboard) you need to fill :
@@ -51,3 +52,5 @@ com.mopub.nativeads.AvocarrotNativeMopub
 ```javascript
 {"appId":"ReplaceWithYourAvocarrotAppId","placement":"ReplaceWithYourAvocarrotPlacement"}
 ```
+
+Also you must include the [`AvocarrotNativeMopub`](https://github.com/Avocarrot/android-adapter/blob/master/avocarrotadapter/src/main/java/com/mopub/nativeads/AvocarrotNativeMopub.java) into your project.
