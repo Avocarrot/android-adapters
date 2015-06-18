@@ -29,7 +29,7 @@ You can use **Avocarrot** as a Network in Mopub Mediation.
 
 * On Mopub dashboard select `Network`  > `Add New network`
 
-![_networks](https://cloud.githubusercontent.com/assets/1907604/8231639/d71a256c-15c1-11e5-9d4e-d125a773f2c0.png)
+![_networks](https://cloud.githubusercontent.com/assets/1907604/8231788/d78cf0dc-15c2-11e5-9bce-ed3e1e056325.png)
 
 * Select `Custom Native Network`
 
