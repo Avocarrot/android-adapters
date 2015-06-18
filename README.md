@@ -27,7 +27,7 @@ You can use **Avocarrot** as a Network in Mopub Mediation.
 
 #### Create an "Avocarrot" `Network` in Mopub's dashboard and connect it to your Ad Units.
 
-* In Mopub's dashboard select `Network`  > `Add New network`
+* In Mopub's dashboard select `Networks`  > `Add New network`
 
 ![_networks](https://cloud.githubusercontent.com/assets/1907604/8231788/d78cf0dc-15c2-11e5-9bce-ed3e1e056325.png)
 
