@@ -89,6 +89,7 @@ com.mopub.nativeads.AvocarrotNativeMopub
 - Login to your dashboard and visit your **"My Apps"** tab 
 - If you haven't created an app click on the **"Create App"** button to create one 
 - Click on the **"Create Placement"** button 
+
 ![Create Placement](https://cloud.githubusercontent.com/assets/1907604/8241257/29fd09f0-1600-11e5-9493-fd3ecd319256.jpg)
 
 - Select **"Create your own"** placement type in Avocarrot Dashboard.
