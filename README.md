@@ -15,13 +15,11 @@ You can use **Avocarrot** as a Network in Mopub Mediation
 
 
 ### Getting Started 
-===
 * Integrate with Avocarrot SDK (https://app.avocarrot.com/#/docs/getting-started/android)
 * Integrate Mopub SDK (https://github.com/mopub/mopub-android-sdk/wiki/Getting-Started)
 
 
 ### Create "Avocarrot Network" in Mopub dashboard and connect with your Ad Units.
-===
 * On Mopub dashboard select "Network" > "Add New network"
 ![_networks](https://cloud.githubusercontent.com/assets/6909699/8229858/5feec64e-15c3-11e5-9921-7585b9f57861.png)
 * Select "Custom Native Network"
@@ -31,7 +29,6 @@ You can use **Avocarrot** as a Network in Mopub Mediation
 
 
 ### Interstitial
-===
 For using Interstitial you need to fill :
 
 **Custom Event Class**
@@ -48,7 +45,6 @@ Also you must include the [`AvocarrotInterstitialMopub`](https://github.com/Avoc
 
 
 ### Native
-===
 For using Native Ad (aka List in Avocarrot Dashboard) you need to fill :
 
 **Custom Event Class**
