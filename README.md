@@ -58,7 +58,7 @@ com.mopub.mobileads.AvocarrotInterstitialMopub
 
 - Include the [`AvocarrotInterstitialMopub`](https://github.com/Avocarrot/android-adapter/blob/master/avocarrotadapter/src/main/java/com/mopub/mobileads/AvocarrotInterstitialMopub.java) in your project.
 
-- Login to your dashboard and visit your **"My Apps"** tab 
+- [Login to your dashboard](https://app.avocarrot.com/#/login) and visit your **"My Apps"** tab 
 
 - If you haven't created an app click on the **"Create App"** button to create one 
 
@@ -90,7 +90,7 @@ com.mopub.nativeads.AvocarrotNativeMopub
 
 - Include the [`AvocarrotNativeMopub`](https://github.com/Avocarrot/android-adapter/blob/master/avocarrotadapter/src/main/java/com/mopub/nativeads/AvocarrotNativeMopub.java) in your project.
 
-- Login to your dashboard and visit your **"My Apps"** tab 
+- [Login to your dashboard](https://app.avocarrot.com/#/login) and visit your **"My Apps"** tab 
 
 - If you haven't created an app click on the **"Create App"** button to create one 
 
