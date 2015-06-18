@@ -37,7 +37,7 @@ You can use **Avocarrot** as a `Network` in **Mopub's** Mediation platform.
 
 * Complete the fields accordingly to the Ad Unit that you want to use
 
-![_setup](https://cloud.githubusercontent.com/assets/1907604/8231638/d70fbdac-15c1-11e5-92d1-09699b53cdeb.png)
+![_setup](https://cloud.githubusercontent.com/assets/1907604/8231932/c2019c76-15c3-11e5-81a9-703a0e986398.png)
 
 ===
 
