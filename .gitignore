@@ -28,5 +28,5 @@ proguard/
 
 # Android Studio Files
 .idea/*
-android-adapter.iml
+android-adapters.iml
 */*.iml
