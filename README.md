@@ -21,8 +21,10 @@ You can use **Avocarrot** as a `Network` in **Mopub's** Mediation platform.
 
 #### Getting Started 
 
-* Integrate with Avocarrot SDK (https://app.avocarrot.com/#/docs/getting-started/android)
-* Integrate with Mopub SDK     (https://github.com/mopub/mopub-android-sdk/wiki/Getting-Started)
+* Integrate with Mopub SDK (https://github.com/mopub/mopub-android-sdk/wiki/Getting-Started)
+* Install Avocarrot SDK  [(Download SDK)](https://s3.amazonaws.com/avocarrot-android-builds/avocarrot-sdk.zip) <br/>
+*More info how to install Avocarrot SDK on [Document Section](https://app.avocarrot.com/#/docs/getting-started/android)*
+
 
 ===
 
