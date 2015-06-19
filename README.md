@@ -2,7 +2,7 @@
 
 
 # android-adapters
-Example project how to use Avocarrot SDK with other Ad Networks, in your Android projects.
+Example project on how to use the Avocarrot SDK with other Ad Networks, in your Android projects.
 
 ## Contents
 * [Mopub](#mopub)
@@ -19,7 +19,7 @@ You can use **Avocarrot** as a `Network` in **Mopub's** Mediation platform.
 
 ===
 
-#### Getting Started 
+#### 1. Setup SDKs
 
 * Integrate with Mopub SDK (https://github.com/mopub/mopub-android-sdk/wiki/Getting-Started)
 * Install Avocarrot SDK  [(Download SDK)](https://s3.amazonaws.com/avocarrot-android-builds/avocarrot-sdk.zip) <br/>
@@ -28,7 +28,9 @@ You can use **Avocarrot** as a `Network` in **Mopub's** Mediation platform.
 
 ===
 
-#### Create an "Avocarrot" `Network` in Mopub's dashboard and connect it to your Ad Units.
+#### 2. Setup Mopub Dashboard
+
+Create an "Avocarrot" `Network` in Mopub's dashboard and connect it to your Ad Units.
 
 * In Mopub's dashboard select `Networks`  > `Add New network`
 
@@ -44,7 +46,7 @@ You can use **Avocarrot** as a `Network` in **Mopub's** Mediation platform.
 
 ===
 
-#### Interstitial
+#### a) Interstitial
 For Interstitial Ad Units you need to :
 
 - Complete the following in Mopub Dashboard:
@@ -67,7 +69,7 @@ Please note that for `Mopub Interstitial` you should create an `Avocarrot "Natur
 
 ===
 
-#### Native
+#### b) Native
 For Native Ad Units (such as `List`, `Feed` in Avocarrot's Dashboard) you need to :
 
 - Complete the following in Mopub Dashboard:
@@ -88,6 +90,14 @@ Please note that for `Mopub Native` you should create an `Avocarrot "Create your
 - Include the [`AvocarrotNativeMopub`](https://github.com/Avocarrot/android-adapter/blob/master/avocarrotadapter/src/main/java/com/mopub/nativeads/AvocarrotNativeMopub.java) in your project.
 
 ===
+
+#### 3. Ready to GO!
+
+Congratulations! You have successfully integrated **Avocarrot**. 
+
+If you have any problem, you can enable the logger or/and sandbox mode by adding `"sandbox":"true" , "logger":"true"` in Custom Event Class Data. For any technical help, please [get in touch](https://app.avocarrot.com/#/docs/contact)
+
+
 
 ### Clone the Example Project
 * git clone https://github.com/Avocarrot/android-adapters.git
