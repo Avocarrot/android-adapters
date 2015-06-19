@@ -6,11 +6,13 @@ Example project on how to use the Avocarrot SDK with other Ad Networks, in your 
 
 ## Contents
 * [Mopub](#mopub)
-  * [Getting Started](#getting-started)
-  * [Setup Mopub](#create-avocarrot-network-in-mopub-dashboard-and-connect-with-your-ad-units)
-  * [Interstitial](#interstitial)
-  * [Native](#native)
+  * [1. Setup SDKs](#1-setup-sdks)
+  * [2. Setup Mopub Dashboard](#2-setup-mopub-dashboard)
+    * [a) Interstitial](#a-interstitial)
+    * [b) Native](#b-native)
+  * [3. Ready to GO!](#3-ready-to-go)
 * [How to Clone the Example Project](#clone-the-example-project)  
+
 
 ===
 
