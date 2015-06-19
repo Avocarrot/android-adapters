@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class AvocarrotInterstitialMopub extends CustomEventInterstitial {
 
-    private static final String PLACEMENT = "placement";
+    private static final String PLACEMENT_KEY = "placementKey";
     private static final String API_KEY = "apiKey";
 
     private static final String SANDBOX = "sandbox";
@@ -61,7 +61,7 @@ public class AvocarrotInterstitialMopub extends CustomEventInterstitial {
         final String placement;
         final String appId;
         if (extrasAreValid(serverExtras)) {
-            placement = serverExtras.get(PLACEMENT);
+            placement = serverExtras.get(PLACEMENT_KEY);
             appId = serverExtras.get(API_KEY);
         } else {
             customEventInterstitialListener.onInterstitialFailed(MoPubErrorCode.ADAPTER_CONFIGURATION_ERROR);
@@ -108,7 +108,7 @@ public class AvocarrotInterstitialMopub extends CustomEventInterstitial {
     }
 
     private boolean extrasAreValid(final Map<String, String> serverExtras) {
-        return (serverExtras!=null) && serverExtras.containsKey(PLACEMENT) && (serverExtras.containsKey(API_KEY));
+        return (serverExtras!=null) && serverExtras.containsKey(PLACEMENT_KEY) && (serverExtras.containsKey(API_KEY));
     }
 
 }

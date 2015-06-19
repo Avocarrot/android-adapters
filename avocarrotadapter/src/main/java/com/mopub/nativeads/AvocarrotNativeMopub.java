@@ -20,7 +20,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class AvocarrotNativeMopub extends CustomEventNative {
 
-    private static final String PLACEMENT = "placement";
+    private static final String PLACEMENT_KEY = "placementKey";
     private static final String API_KEY = "apiKey";
 
     private static final String SANDBOX = "sandbox";
@@ -75,7 +75,7 @@ public class AvocarrotNativeMopub extends CustomEventNative {
         final String placement;
         final String appId;
         if (extrasAreValid(serverExtras)) {
-            placement = serverExtras.get(PLACEMENT);
+            placement = serverExtras.get(PLACEMENT_KEY);
             appId = serverExtras.get(API_KEY);
         } else {
             customEventNativeListener.onNativeAdFailed(NativeErrorCode.NATIVE_ADAPTER_CONFIGURATION_ERROR);
@@ -111,7 +111,7 @@ public class AvocarrotNativeMopub extends CustomEventNative {
     }
 
     private boolean extrasAreValid(final Map<String, String> serverExtras) {
-        return (serverExtras!=null) && serverExtras.containsKey(PLACEMENT) && (serverExtras.containsKey(API_KEY));
+        return (serverExtras!=null) && serverExtras.containsKey(PLACEMENT_KEY) && (serverExtras.containsKey(API_KEY));
     }
 
     class AvocarrotNativeAd extends BaseForwardingNativeAd {
