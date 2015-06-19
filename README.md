@@ -103,3 +103,7 @@ com.mopub.nativeads.AvocarrotNativeMopub
 ![Create your own](https://cloud.githubusercontent.com/assets/6909699/8232332/7e086d9c-15d7-11e5-81ef-1878ac2fdbdc.png)
 
 ===
+
+### Clone project
+* git clone https://github.com/Avocarrot/android-adapters.git
+* git submodule update --init --recursive
