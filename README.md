@@ -10,6 +10,7 @@ Example project how to use Avocarrot SDK with other Ad Networks, in your Android
   * [Setup Mopub](#create-avocarrot-network-in-mopub-dashboard-and-connect-with-your-ad-units)
   * [Interstitial](#interstitial)
   * [Native](#native)
+* [How to Clone](#clone-project)  
 
 ===
 
