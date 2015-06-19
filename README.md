@@ -10,7 +10,7 @@ Example project how to use Avocarrot SDK with other Ad Networks, in your Android
   * [Setup Mopub](#create-avocarrot-network-in-mopub-dashboard-and-connect-with-your-ad-units)
   * [Interstitial](#interstitial)
   * [Native](#native)
-* [How to Clone](#clone-project)  
+* [How to Clone the Example Project](#clone-project)  
 
 ===
 
@@ -107,6 +107,7 @@ com.mopub.nativeads.AvocarrotNativeMopub
 
 ===
 
-### Clone project
+### Clone the Example Project
 * git clone https://github.com/Avocarrot/android-adapters.git
 * git submodule update --init --recursive
+* Update your Mediation Ad Unit Ids in res/string.xml
