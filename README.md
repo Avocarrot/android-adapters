@@ -1,7 +1,7 @@
 <img width="300" src="https://cloud.githubusercontent.com/assets/1907604/7618436/f8c371de-f9a9-11e4-8846-772f67f53513.jpg"/>
 
 
-# android-adapter
+# android-adapters
 Example project how to use Avocarrot SDK with other Ad Networks, in your Android projects.
 
 ## Contents
@@ -56,7 +56,7 @@ com.mopub.mobileads.AvocarrotInterstitialMopub
 
 **Custom Event Class Data**
 ```javascript
-{"appId":"ReplaceWithYourAvocarrotAppId","placement":"ReplaceWithYourAvocarrotPlacement"}
+{"apiKey":"ReplaceWithYourAvocarrotApiKey","placement":"ReplaceWithYourAvocarrotPlacement"}
 ```
 
 - Include the [`AvocarrotInterstitialMopub`](https://github.com/Avocarrot/android-adapter/blob/master/avocarrotadapter/src/main/java/com/mopub/mobileads/AvocarrotInterstitialMopub.java) in your project.
@@ -88,7 +88,7 @@ com.mopub.nativeads.AvocarrotNativeMopub
 
 **Custom Event Class Data**
 ```javascript
-{"appId":"ReplaceWithYourAvocarrotAppId","placement":"ReplaceWithYourAvocarrotPlacement"}
+{"apiKey":"ReplaceWithYourAvocarrotApiKey","placement":"ReplaceWithYourAvocarrotPlacement"}
 ```
 
 - Include the [`AvocarrotNativeMopub`](https://github.com/Avocarrot/android-adapter/blob/master/avocarrotadapter/src/main/java/com/mopub/nativeads/AvocarrotNativeMopub.java) in your project.
