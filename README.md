@@ -44,7 +44,7 @@ Create an "Avocarrot" `Network` in Mopub's dashboard and connect it to your Ad U
 
 * Complete the fields accordingly to the Ad Unit that you want to use
 
-![_setup](https://cloud.githubusercontent.com/assets/1907604/8231932/c2019c76-15c3-11e5-81a9-703a0e986398.png)
+![_setup](https://cloud.githubusercontent.com/assets/6909699/8268600/01a399de-1794-11e5-8253-07df0154c259.png)
 
 ===
 
