@@ -13,7 +13,8 @@
     <string name="adapter_name">Custom Adapter Name</string>
     <string name="adapter_source_code">Custom Adapter Source Code</string>
 
-    <string name="mopub_interstitial_ad_unit_id">47754969b69f445193851f9f06dd66af</string>
-    <string name="mopub_native_ad_unit_id">72d71a479ce94cc78f9787c3ac9a7a1f</string>
+    <!-- Update with your Mopub Ad Unit Ids -->
+    <string name="mopub_interstitial_ad_unit_id"></string>
+    <string name="mopub_native_ad_unit_id"></string>
 
 </resources>
