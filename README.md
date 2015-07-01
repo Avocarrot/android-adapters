@@ -52,7 +52,7 @@ Create an "Avocarrot" `Network` in Mopub's dashboard and connect it to your Ad U
 ===
 
 #### a) Interstitial
-For Interstitial Ad Units you need to :
+For Interstitial Ad Units (`Natural Pause` in Avocarrot => `Fullscreen`, `Medium` etc formats in Mopub), you need to :
 
 - Complete the following in Mopub Dashboard:
 
@@ -75,7 +75,7 @@ Please note that for `Mopub Interstitial` you should create an `Avocarrot "Natur
 ===
 
 #### b) Native
-For Native Ad Units (such as `List`, `Feed` in Avocarrot's Dashboard) you need to :
+For Native Ad Units (such as `List`, `Feed` in Avocarrot's Dashboard => `Native (Custom Layout)` Format in Mopub) you need to :
 
 - Complete the following in Mopub Dashboard:
 
