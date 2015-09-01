@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-/* Compatible with Avocarrot SDK 3.3.4+ */
+/* Compatible with Avocarrot SDK 3.4.0+ */
 
 public class AvocarrotNativeMopub extends CustomEventNative {
 
@@ -139,7 +139,7 @@ public class AvocarrotNativeMopub extends CustomEventNative {
         public void handleClick(@Nullable View view) {
             super.handleClick(view);
             if (avocarrotModel.getClickUrls()!=null)
-                new UrlTrackerThread(avocarrotModel.getClickUrls()).start();
+                new Thread( new UrlTrackerThread(avocarrotModel.getClickUrls()) ).start();
 
         }
 
