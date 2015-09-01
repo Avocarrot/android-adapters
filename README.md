@@ -4,6 +4,8 @@
 # android-adapters
 Example project on how to use the Avocarrot SDK with other Ad Networks, in your Android projects.
 
+For any technical help or questions, please get in touch with [support](https://app.avocarrot.com/#/docs/contact)
+
 ## Contents
 * [Mopub](#mopub)
   * [1. Setup SDKs](#1-setup-sdks)
@@ -11,6 +13,7 @@ Example project on how to use the Avocarrot SDK with other Ad Networks, in your 
     * [a) Interstitial](#a-interstitial)
     * [b) Native](#b-native)
   * [3. Ready to GO!](#3-ready-to-go)
+* [Troubleshooting](#troubleshooting)   
 * [How to Clone the Example Project](#clone-the-example-project)  
 
 
@@ -49,7 +52,7 @@ Create an "Avocarrot" `Network` in Mopub's dashboard and connect it to your Ad U
 ===
 
 #### a) Interstitial
-For Interstitial Ad Units you need to :
+For Interstitial Ad Units (`Natural Pause` in Avocarrot => `Fullscreen`, `Medium` etc formats in Mopub), you need to :
 
 - Complete the following in Mopub Dashboard:
 
@@ -72,7 +75,7 @@ Please note that for `Mopub Interstitial` you should create an `Avocarrot "Natur
 ===
 
 #### b) Native
-For Native Ad Units (such as `List`, `Feed` in Avocarrot's Dashboard) you need to :
+For Native Ad Units (such as `List`, `Feed` in Avocarrot's Dashboard => `Native (Custom Layout)` Format in Mopub) you need to :
 
 - Complete the following in Mopub Dashboard:
 
@@ -95,13 +98,20 @@ Please note that for `Mopub Native` you should create an `Avocarrot "Create your
 
 #### 3. Ready to GO!
 
-Congratulations! You have successfully integrated **Avocarrot**. 
-
-If you have any problem, you can enable the logger or/and sandbox mode by adding `"sandbox":"true" , "logger":"true"` in Custom Event Class Data. For any technical help, please [get in touch](https://app.avocarrot.com/#/docs/contact)
+Congratulations! You have now successfully integrated **Avocarrot** and you should have received your first ad.
 
 
+#### Troubleshooting
+
+- If you have any problem, you can enable the logger or/and sandbox mode by adding `"sandbox":"true" , "logger":"true"` in Custom Event Class Data.
+- Please have in mind, that any time you make a change to the Mopub dashboard, try to fetch an ad a couple times and then wait a few minutes for Mopub's cache to clear.
+- You can also try cloning the example project below to make sure everything is running ok
+- If at any point you need any technical help, please get in touch with [support] (https://app.avocarrot.com/#/docs/contact)
 
 ### Clone the Example Project
 * git clone https://github.com/Avocarrot/android-adapters.git
+* cd android-adapters
 * git submodule update --init --recursive
+* Import to Android Studio
 * Update your Mediation Ad Unit Ids in res/string.xml
+* Run in the emulator and you should receive ads normally in the Example App
