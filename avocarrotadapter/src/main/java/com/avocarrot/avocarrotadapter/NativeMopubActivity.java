@@ -1,21 +1,17 @@
 package com.avocarrot.avocarrotadapter;
 
-import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Context;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 
 import com.mopub.nativeads.MoPubAdAdapter;
-import com.mopub.nativeads.MoPubNative;
 import com.mopub.nativeads.MoPubNativeAdPositioning;
-import com.mopub.nativeads.MoPubNativeAdRenderer;
-import com.mopub.nativeads.RequestParameters;
+import com.mopub.nativeads.MoPubStaticNativeAdRenderer;
 import com.mopub.nativeads.ViewBinder;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 public class NativeMopubActivity extends ListActivity {
@@ -41,7 +37,7 @@ public class NativeMopubActivity extends ListActivity {
         // Set up the positioning behavior your ads should have.
         MoPubNativeAdPositioning.MoPubServerPositioning adPositioning =
                 MoPubNativeAdPositioning.serverPositioning();
-        MoPubNativeAdRenderer adRenderer = new MoPubNativeAdRenderer(viewBinder);
+        MoPubStaticNativeAdRenderer adRenderer = new MoPubStaticNativeAdRenderer(viewBinder);
 
         // Set up the MoPubAdAdapter
         mAdAdapter = new MoPubAdAdapter(this, myAdapter, adPositioning);
