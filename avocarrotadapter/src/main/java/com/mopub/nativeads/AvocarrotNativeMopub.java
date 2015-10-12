@@ -114,7 +114,7 @@ public class AvocarrotNativeMopub extends CustomEventNative {
         return (serverExtras!=null) && serverExtras.containsKey(PLACEMENT_KEY) && (serverExtras.containsKey(API_KEY));
     }
 
-    class AvocarrotNativeAd extends BaseForwardingNativeAd {
+    class AvocarrotNativeAd extends StaticNativeAd {
 
         CustomModel avocarrotModel;
 
