@@ -89,7 +89,7 @@ public class AvocarrotInterstitialMopub extends CustomEventInterstitial {
 
         mAvocarrotInterstitial.setSandbox(sandbox);
         mAvocarrotInterstitial.setLogger(logger, "ALL");
-
+        mAvocarrotInterstitial.setCarouselMode(false);
         mAvocarrotInterstitial.loadAd();
         mAvocarrotInterstitial.setListener(mAvocarrorListener);
         this.customEventInterstitialListener = customEventInterstitialListener;

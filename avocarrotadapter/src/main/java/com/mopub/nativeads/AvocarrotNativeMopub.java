@@ -3,7 +3,6 @@ package com.mopub.nativeads;
 import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.avocarrot.androidsdk.AdError;
@@ -16,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-/* Compatible with Avocarrot SDK 3.4.0+ */
+/* Compatible with Avocarrot SDK 3.4.2+ */
 
 public class AvocarrotNativeMopub extends CustomEventNative {
 
@@ -26,43 +25,15 @@ public class AvocarrotNativeMopub extends CustomEventNative {
     private static final String SANDBOX = "sandbox";
     private static final String LOGGER = "logger";
 
-    AvocarrotCustom mAvocarrotCustom;
-    CustomEventNativeListener customEventNativeListener;
-
     static ConcurrentLinkedQueue<CustomModel> CachedModels = new ConcurrentLinkedQueue<>();
 
-    AvocarrotCustomListener mAvocarrorListener = new AvocarrotCustomListener() {
-        @Override
-        public void onAdLoaded(List<CustomModel> ads) {
-            super.onAdLoaded(ads);
-            if ((ads!=null) && (ads.size()>0)) {
-                for (CustomModel model : ads)
-                    CachedModels.add(model);
-                CustomModel model = CachedModels.poll();
-                if (model!=null) {
-                    customEventNativeListener.onNativeAdLoaded(new AvocarrotNativeAd(model));
-                } else {
-                    customEventNativeListener.onNativeAdFailed(NativeErrorCode.EMPTY_AD_RESPONSE);
-                }
-            } else {
-                customEventNativeListener.onNativeAdFailed(NativeErrorCode.EMPTY_AD_RESPONSE);
-            }
-        }
-
-        @Override
-        public void onAdError(AdError error) {
-            super.onAdError(error);
-            customEventNativeListener.onNativeAdFailed(NativeErrorCode.EMPTY_AD_RESPONSE);
-        }
-    };
-
     @Override
-    protected void loadNativeAd(@NonNull Context context, @NonNull CustomEventNativeListener customEventNativeListener, @NonNull Map<String, Object> localExtras, @NonNull Map<String, String> serverExtras) {
+    protected void loadNativeAd(final @NonNull Context context, final @NonNull CustomEventNativeListener customEventNativeListener, @NonNull Map<String, Object> localExtras, @NonNull Map<String, String> serverExtras) {
 
         if (CachedModels.size()>0) {
             CustomModel model = CachedModels.poll();
             if (model!=null) {
-                customEventNativeListener.onNativeAdLoaded(new AvocarrotNativeAd(model));
+                customEventNativeListener.onNativeAdLoaded(new AvocarrotNativeAd(model, context));
                 return;
             }
         }
@@ -82,7 +53,7 @@ public class AvocarrotNativeMopub extends CustomEventNative {
             return;
         }
 
-        mAvocarrotCustom = new AvocarrotCustom((Activity)context, appId, placement, "mopub");
+        AvocarrotCustom mAvocarrotCustom = new AvocarrotCustom((Activity)context, appId, placement, "mopub");
 
         boolean sandbox = false;
         try {
@@ -102,11 +73,33 @@ public class AvocarrotNativeMopub extends CustomEventNative {
         }
 
         mAvocarrotCustom.setSandbox(sandbox);
-        mAvocarrotCustom.setLogger(logger, "ALL" );
+        mAvocarrotCustom.setLogger(logger, "ALL");
 
         mAvocarrotCustom.loadAds(3);
-        mAvocarrotCustom.setListener(mAvocarrorListener);
-        this.customEventNativeListener = customEventNativeListener;
+        mAvocarrotCustom.setListener(new AvocarrotCustomListener() {
+            @Override
+            public void onAdLoaded(List<CustomModel> ads) {
+                super.onAdLoaded(ads);
+                if ((ads!=null) && (ads.size()>0)) {
+                    for (CustomModel model : ads)
+                        CachedModels.add(model);
+                    CustomModel model = CachedModels.poll();
+                    if (model!=null) {
+                        customEventNativeListener.onNativeAdLoaded(new AvocarrotNativeAd(model, context));
+                    } else {
+                        customEventNativeListener.onNativeAdFailed(NativeErrorCode.EMPTY_AD_RESPONSE);
+                    }
+                } else {
+                    customEventNativeListener.onNativeAdFailed(NativeErrorCode.EMPTY_AD_RESPONSE);
+                }
+            }
+
+            @Override
+            public void onAdError(AdError error) {
+                super.onAdError(error);
+                customEventNativeListener.onNativeAdFailed(NativeErrorCode.EMPTY_AD_RESPONSE);
+            }
+        });
 
     }
 
@@ -116,10 +109,15 @@ public class AvocarrotNativeMopub extends CustomEventNative {
 
     class AvocarrotNativeAd extends StaticNativeAd {
 
-        CustomModel avocarrotModel;
+        final CustomModel avocarrotModel;
+        final ImpressionTracker impressionTracker;
+        final NativeClickHandler nativeClickHandler;
 
-        public AvocarrotNativeAd(@NonNull CustomModel customModel) {
+        public AvocarrotNativeAd(@NonNull CustomModel customModel, Context context) {
+
             avocarrotModel = customModel;
+            impressionTracker = new ImpressionTracker(context);
+            nativeClickHandler = new NativeClickHandler(context);
 
             setIconImageUrl(avocarrotModel.getIconUrl());
             setMainImageUrl(avocarrotModel.getImageUrl());
@@ -136,11 +134,22 @@ public class AvocarrotNativeMopub extends CustomEventNative {
         }
 
         @Override
-        public void handleClick(@Nullable View view) {
-            super.handleClick(view);
+        public void prepare(final View view) {
+            impressionTracker.addView(view, this);
+            nativeClickHandler.setOnClickListener(view, this);
+        }
+
+        @Override
+        public void recordImpression(final View view) {
+            notifyAdImpressed();
+        }
+
+        @Override
+        public void handleClick(final View view) {
+            notifyAdClicked();
+            nativeClickHandler.openClickDestinationUrl(getClickDestinationUrl(), view);
             if (avocarrotModel.getClickUrls()!=null)
                 new Thread( new UrlTrackerThread(avocarrotModel.getClickUrls()) ).start();
-
         }
 
     }
