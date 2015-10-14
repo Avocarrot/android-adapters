@@ -75,7 +75,7 @@ public class AvocarrotNativeMopub extends CustomEventNative {
         mAvocarrotCustom.setSandbox(sandbox);
         mAvocarrotCustom.setLogger(logger, "ALL");
 
-        mAvocarrotCustom.loadAds(3);
+        mAvocarrotCustom.loadAd();
         mAvocarrotCustom.setListener(new AvocarrotCustomListener() {
             @Override
             public void onAdLoaded(List<CustomModel> ads) {
