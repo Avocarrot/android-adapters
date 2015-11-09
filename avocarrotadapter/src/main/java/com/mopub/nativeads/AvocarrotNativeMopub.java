@@ -13,9 +13,8 @@ import com.avocarrot.androidsdk.UrlTrackerThread;
 
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
-/* Compatible with Avocarrot SDK 3.4.2+ */
+/* Compatible with Avocarrot SDK 3.5.0+ */
 
 public class AvocarrotNativeMopub extends CustomEventNative {
 
@@ -25,18 +24,10 @@ public class AvocarrotNativeMopub extends CustomEventNative {
     private static final String SANDBOX = "sandbox";
     private static final String LOGGER = "logger";
 
-    static ConcurrentLinkedQueue<CustomModel> CachedModels = new ConcurrentLinkedQueue<>();
+    AvocarrotCustom mAvocarrotCustom;
 
     @Override
     protected void loadNativeAd(final @NonNull Context context, final @NonNull CustomEventNativeListener customEventNativeListener, @NonNull Map<String, Object> localExtras, @NonNull Map<String, String> serverExtras) {
-
-        if (CachedModels.size()>0) {
-            CustomModel model = CachedModels.poll();
-            if (model!=null) {
-                customEventNativeListener.onNativeAdLoaded(new AvocarrotNativeAd(model, context));
-                return;
-            }
-        }
 
         if (!(context instanceof Activity)) {
             customEventNativeListener.onNativeAdFailed(NativeErrorCode.NATIVE_ADAPTER_CONFIGURATION_ERROR);
@@ -53,7 +44,7 @@ public class AvocarrotNativeMopub extends CustomEventNative {
             return;
         }
 
-        AvocarrotCustom mAvocarrotCustom = new AvocarrotCustom((Activity)context, appId, placement, "mopub");
+        mAvocarrotCustom = new AvocarrotCustom((Activity)context, appId, placement, "mopub");
 
         boolean sandbox = false;
         try {
@@ -75,15 +66,12 @@ public class AvocarrotNativeMopub extends CustomEventNative {
         mAvocarrotCustom.setSandbox(sandbox);
         mAvocarrotCustom.setLogger(logger, "ALL");
 
-        mAvocarrotCustom.loadAd();
         mAvocarrotCustom.setListener(new AvocarrotCustomListener() {
             @Override
             public void onAdLoaded(List<CustomModel> ads) {
                 super.onAdLoaded(ads);
                 if ((ads!=null) && (ads.size()>0)) {
-                    for (CustomModel model : ads)
-                        CachedModels.add(model);
-                    CustomModel model = CachedModels.poll();
+                    CustomModel model = ads.get(0);
                     if (model!=null) {
                         customEventNativeListener.onNativeAdLoaded(new AvocarrotNativeAd(model, context));
                     } else {
@@ -100,6 +88,7 @@ public class AvocarrotNativeMopub extends CustomEventNative {
                 customEventNativeListener.onNativeAdFailed(NativeErrorCode.EMPTY_AD_RESPONSE);
             }
         });
+        mAvocarrotCustom.loadAd();
 
     }
 
@@ -142,6 +131,7 @@ public class AvocarrotNativeMopub extends CustomEventNative {
         @Override
         public void recordImpression(final View view) {
             notifyAdImpressed();
+            mAvocarrotCustom.impressionRegistered(view, avocarrotModel);
         }
 
         @Override

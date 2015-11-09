@@ -9,7 +9,7 @@ import com.avocarrot.androidsdk.AvocarrotInterstitialListener;
 
 import java.util.Map;
 
-/* Compatible with Avocarrot SDK 3.3.4+ */
+/* Compatible with Avocarrot SDK 3.5.0+ */
 
 public class AvocarrotInterstitialMopub extends CustomEventInterstitial {
 
