@@ -1,7 +1,6 @@
 package com.mopub.nativeads;
 
 import android.app.Activity;
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.View;
 
@@ -27,12 +26,7 @@ public class AvocarrotNativeMopub extends CustomEventNative {
     AvocarrotCustom mAvocarrotCustom;
 
     @Override
-    protected void loadNativeAd(final @NonNull Context context, final @NonNull CustomEventNativeListener customEventNativeListener, @NonNull Map<String, Object> localExtras, @NonNull Map<String, String> serverExtras) {
-
-        if (!(context instanceof Activity)) {
-            customEventNativeListener.onNativeAdFailed(NativeErrorCode.NATIVE_ADAPTER_CONFIGURATION_ERROR);
-            return;
-        }
+    protected void loadNativeAd(final @NonNull Activity activity, final @NonNull CustomEventNativeListener customEventNativeListener, @NonNull Map<String, Object> localExtras, @NonNull Map<String, String> serverExtras) {
 
         final String placement;
         final String appId;
@@ -44,7 +38,7 @@ public class AvocarrotNativeMopub extends CustomEventNative {
             return;
         }
 
-        mAvocarrotCustom = new AvocarrotCustom((Activity)context, appId, placement, "mopub");
+        mAvocarrotCustom = new AvocarrotCustom(activity, appId, placement, "mopub");
 
         boolean sandbox = false;
         try {
@@ -70,10 +64,10 @@ public class AvocarrotNativeMopub extends CustomEventNative {
             @Override
             public void onAdLoaded(List<CustomModel> ads) {
                 super.onAdLoaded(ads);
-                if ((ads!=null) && (ads.size()>0)) {
+                if ((ads != null) && (ads.size() > 0)) {
                     CustomModel model = ads.get(0);
-                    if (model!=null) {
-                        customEventNativeListener.onNativeAdLoaded(new AvocarrotNativeAd(model, context));
+                    if (model != null) {
+                        customEventNativeListener.onNativeAdLoaded(new AvocarrotNativeAd(model, activity));
                     } else {
                         customEventNativeListener.onNativeAdFailed(NativeErrorCode.EMPTY_AD_RESPONSE);
                     }
@@ -102,11 +96,11 @@ public class AvocarrotNativeMopub extends CustomEventNative {
         final ImpressionTracker impressionTracker;
         final NativeClickHandler nativeClickHandler;
 
-        public AvocarrotNativeAd(@NonNull CustomModel customModel, Context context) {
+        public AvocarrotNativeAd(@NonNull CustomModel customModel, Activity activity) {
 
             avocarrotModel = customModel;
-            impressionTracker = new ImpressionTracker(context);
-            nativeClickHandler = new NativeClickHandler(context);
+            impressionTracker = new ImpressionTracker(activity);
+            nativeClickHandler = new NativeClickHandler(activity);
 
             setIconImageUrl(avocarrotModel.getIconUrl());
             setMainImageUrl(avocarrotModel.getImageUrl());
