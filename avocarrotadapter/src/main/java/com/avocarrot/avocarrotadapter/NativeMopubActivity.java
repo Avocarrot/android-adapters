@@ -32,6 +32,7 @@ public class NativeMopubActivity extends ListActivity {
                 .titleId(R.id.native_title)
                 .textId(R.id.native_text)
                 .callToActionId(R.id.native_cta)
+                .privacyInformationIconImageId(R.id.native_ad_privacy)
                 .build();
 
         // Set up the positioning behavior your ads should have.

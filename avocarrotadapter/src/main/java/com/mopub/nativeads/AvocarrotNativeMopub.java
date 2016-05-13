@@ -2,8 +2,10 @@ package com.mopub.nativeads;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import android.view.View;
 
+import com.avocarrot.androidsdk.AdChoices;
 import com.avocarrot.androidsdk.AdError;
 import com.avocarrot.androidsdk.AvocarrotCustom;
 import com.avocarrot.androidsdk.AvocarrotCustomListener;
@@ -113,6 +115,12 @@ public class AvocarrotNativeMopub extends CustomEventNative {
 
             for (String tracker : avocarrotModel.getImpressionUrls())
                 addImpressionTracker(tracker);
+
+            AdChoices adChoices = avocarrotModel.getAdChoices();
+            if (adChoices!=null) {
+                setPrivacyInformationIconClickThroughUrl(adChoices.getRedirectionUrl());
+                setPrivacyInformationIconImageUrl(adChoices.getIconUrl());
+            }
 
         }
 
