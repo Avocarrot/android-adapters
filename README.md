@@ -94,6 +94,8 @@ Please note that for `Mopub Native` you should create an `Avocarrot "Create your
 
 - Include the [`AvocarrotNativeMopub`](https://github.com/Avocarrot/android-adapter/blob/master/avocarrotadapter/src/main/java/com/mopub/nativeads/AvocarrotNativeMopub.java) in your project.
 
+- Add AdChoice Icon in you layout by adding PrivacyInfo. Check example : [`NativeMopubActivity.java`](Check out https://github.com/Avocarrot/android-adapters/blob/master/avocarrotadapter/src/main/java/com/avocarrot/avocarrotadapter/NativeMopubActivity.java#L35)
+
 ===
 
 #### 3. Ready to GO!
