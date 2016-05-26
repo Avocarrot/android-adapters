@@ -36,8 +36,7 @@ public class NativeMopubActivity extends ListActivity {
                 .build();
 
         // Set up the positioning behavior your ads should have.
-        MoPubNativeAdPositioning.MoPubServerPositioning adPositioning =
-                MoPubNativeAdPositioning.serverPositioning();
+        MoPubNativeAdPositioning.MoPubServerPositioning adPositioning = MoPubNativeAdPositioning.serverPositioning();
         MoPubStaticNativeAdRenderer adRenderer = new MoPubStaticNativeAdRenderer(viewBinder);
 
         // Set up the MoPubAdAdapter
