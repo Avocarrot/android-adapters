@@ -1,6 +1,8 @@
 package com.mopub.nativeads;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.ContextWrapper;
 import android.support.annotation.NonNull;
 import android.view.View;
 
@@ -27,7 +29,7 @@ public class AvocarrotNativeMopub extends CustomEventNative {
 
     @Override
     protected void loadNativeAd(
-            final @NonNull Activity activity,
+            final @NonNull Context context,
             final @NonNull CustomEventNativeListener customEventNativeListener,
             @NonNull Map<String, Object> localExtras,
             @NonNull Map<String, String> serverExtras
@@ -43,7 +45,7 @@ public class AvocarrotNativeMopub extends CustomEventNative {
             return;
         }
 
-        mAvocarrotCustom = new AvocarrotCustom(activity, appId, placement, "mopub");
+        mAvocarrotCustom = new AvocarrotCustom(unwrapActivity(context), appId, placement, "mopub");
 
         boolean sandbox = false;
         try {
@@ -113,6 +115,13 @@ public class AvocarrotNativeMopub extends CustomEventNative {
 
     private boolean extrasAreValid(final Map<String, String> serverExtras) {
         return (serverExtras!=null) && serverExtras.containsKey(PLACEMENT_KEY) && (serverExtras.containsKey(API_KEY));
+    }
+
+    private Activity unwrapActivity(Context context) {
+        while (!(context instanceof Activity) && (context instanceof ContextWrapper)) {
+            context = ((ContextWrapper) context).getBaseContext();
+        }
+        return (context instanceof Activity) ? (Activity) context : null;
     }
 
     class AvocarrotNativeAd extends StaticNativeAd implements View.OnClickListener {
