@@ -12,6 +12,7 @@ import com.avocarrot.androidsdk.AvocarrotCustom;
 import com.avocarrot.androidsdk.AvocarrotCustomListener;
 import com.avocarrot.androidsdk.CustomModel;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -77,8 +78,7 @@ public class AvocarrotNativeMopub extends CustomEventNative {
                 if ((ads != null) && (ads.size() > 0)) {
                     CustomModel model = ads.get(0);
                     if (model != null) {
-                        avocarrotNativeAd = new AvocarrotNativeAd(model, mAvocarrotCustom);
-                        customEventNativeListener.onNativeAdLoaded(avocarrotNativeAd);
+                        avocarrotNativeAd = new AvocarrotNativeAd(model, mAvocarrotCustom, context, customEventNativeListener);
                     } else {
                         customEventNativeListener.onNativeAdFailed(NativeErrorCode.EMPTY_AD_RESPONSE);
                     }
@@ -129,7 +129,7 @@ public class AvocarrotNativeMopub extends CustomEventNative {
         final CustomModel avocarrotModel;
         final AvocarrotCustom avocarrotCustom;
 
-        public AvocarrotNativeAd(@NonNull CustomModel customModel, AvocarrotCustom avocarrotCustom) {
+        public AvocarrotNativeAd(@NonNull CustomModel customModel, AvocarrotCustom avocarrotCustom, final Context context, final CustomEventNativeListener customEventNativeListener) {
 
             this.avocarrotModel = customModel;
             this.avocarrotCustom = avocarrotCustom;
@@ -148,6 +148,29 @@ public class AvocarrotNativeMopub extends CustomEventNative {
                 setPrivacyInformationIconClickThroughUrl(adChoices.getRedirectionUrl());
                 setPrivacyInformationIconImageUrl(adChoices.getIconUrl());
             }
+
+            final List<String> imageUrls = new ArrayList<String>();
+            final String mainImageUrl = getMainImageUrl();
+            if (mainImageUrl != null) {
+                imageUrls.add(getMainImageUrl());
+            }
+            final String iconUrl = getIconImageUrl();
+            if (iconUrl != null) {
+                imageUrls.add(getIconImageUrl());
+            }
+
+            NativeImageHelper.preCacheImages(context, imageUrls, new NativeImageHelper.ImageListener() {
+                @Override
+                public void onImagesCached() {
+                    customEventNativeListener.onNativeAdLoaded(AvocarrotNativeAd.this);
+                }
+
+                @Override
+                public void onImagesFailedToCache(NativeErrorCode errorCode) {
+                    customEventNativeListener.onNativeAdFailed(errorCode);
+                }
+            });
+
 
         }
 
