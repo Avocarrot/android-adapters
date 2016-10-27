@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-/* Compatible with Avocarrot SDK 3.7.1+ */
+/* Compatible with Avocarrot SDK 3.7.5+ */
 
 public class AvocarrotNativeMopub extends CustomEventNative {
 
@@ -46,7 +46,7 @@ public class AvocarrotNativeMopub extends CustomEventNative {
             return;
         }
 
-        mAvocarrotCustom = new AvocarrotCustom(unwrapActivity(context), appId, placement, "mopub");
+        mAvocarrotCustom = new AvocarrotCustom(context, appId, placement, "mopub");
 
         boolean sandbox = false;
         try {
@@ -117,13 +117,6 @@ public class AvocarrotNativeMopub extends CustomEventNative {
         return (serverExtras!=null) && serverExtras.containsKey(PLACEMENT_KEY) && (serverExtras.containsKey(API_KEY));
     }
 
-    private Activity unwrapActivity(Context context) {
-        while (!(context instanceof Activity) && (context instanceof ContextWrapper)) {
-            context = ((ContextWrapper) context).getBaseContext();
-        }
-        return (context instanceof Activity) ? (Activity) context : null;
-    }
-
     class AvocarrotNativeAd extends StaticNativeAd implements View.OnClickListener {
 
         final CustomModel avocarrotModel;
@@ -170,7 +163,6 @@ public class AvocarrotNativeMopub extends CustomEventNative {
                     customEventNativeListener.onNativeAdFailed(errorCode);
                 }
             });
-
 
         }
 
