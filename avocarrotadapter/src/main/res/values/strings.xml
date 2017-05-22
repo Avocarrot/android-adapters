@@ -7,6 +7,7 @@
     <string name="mopub_intestitial_msg_isShown">Interstitial is shown</string>
     <string name="mopub_intestitial">Mopub | Interstitial</string>
     <string name="mopub_native">Mopub | Native</string>
+    <string name="mopub_native_with_recycler_view">Mopub | Native with RecyclerView </string>
 
     <string name="custom_adapter">Select Custom Adapter Example</string>
     <string name="show_example">Show Example</string>

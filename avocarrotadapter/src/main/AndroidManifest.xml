@@ -23,6 +23,7 @@
         </activity>
         <activity android:name=".InterstitialMopubActivity" />
         <activity android:name=".NativeMopubActivity" />
+        <activity android:name=".NativeMopubRecyclerActivity" />
 
         <!-- Mopub -->
 

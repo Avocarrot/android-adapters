@@ -75,6 +75,12 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
                 getString(R.string.mopub_native),
                 AvocarrotNativeMopub.class,
                 NativeMopubActivity.class));
+        /* Mopub > Native with RecyclerView */
+        supportedCustomAdapters.add(
+            new CustomAdapterItem(
+                getString(R.string.mopub_native_with_recycler_view),
+                AvocarrotNativeMopub.class,
+                NativeMopubRecyclerActivity.class));
 
         return  supportedCustomAdapters;
     }
