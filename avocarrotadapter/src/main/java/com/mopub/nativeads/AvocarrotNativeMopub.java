@@ -1,32 +1,31 @@
 package com.mopub.nativeads;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.ContextWrapper;
 import android.support.annotation.NonNull;
 import android.view.View;
 
-import com.avocarrot.androidsdk.AdChoices;
-import com.avocarrot.androidsdk.AdError;
-import com.avocarrot.androidsdk.AvocarrotCustom;
-import com.avocarrot.androidsdk.AvocarrotCustomListener;
-import com.avocarrot.androidsdk.CustomModel;
+import com.avocarrot.sdk.AdChoices;
+import com.avocarrot.sdk.AdError;
+import com.avocarrot.sdk.AdLayout;
+import com.avocarrot.sdk.Avocarrot;
+import com.avocarrot.sdk.NativeAssets;
+import com.avocarrot.sdk.NativeAssetsAd;
+import com.avocarrot.sdk.NativeAssetsAdCallback;
+import com.avocarrot.sdk.logger.Level;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-/* Compatible with Avocarrot SDK 3.7.5+ */
+/* Compatible with Avocarrot SDK 4.+ */
 
 public class AvocarrotNativeMopub extends CustomEventNative {
 
-    private static final String PLACEMENT_KEY = "placementKey";
+    private static final String AD_UNIT_ID = "adUnitId";
     private static final String API_KEY = "apiKey";
 
     private static final String SANDBOX = "sandbox";
     private static final String LOGGER = "logger";
-
-    AvocarrotCustom mAvocarrotCustom;
 
     @Override
     protected void loadNativeAd(
@@ -36,108 +35,108 @@ public class AvocarrotNativeMopub extends CustomEventNative {
             @NonNull Map<String, String> serverExtras
     ) {
 
-        final String placement;
-        final String appId;
+        String adUnitId;
+        String appKey;
         if (extrasAreValid(serverExtras)) {
-            placement = serverExtras.get(PLACEMENT_KEY);
-            appId = serverExtras.get(API_KEY);
+
+            appKey = serverExtras.get(API_KEY);
+            adUnitId = serverExtras.get(AD_UNIT_ID);
         } else {
             customEventNativeListener.onNativeAdFailed(NativeErrorCode.NATIVE_ADAPTER_CONFIGURATION_ERROR);
             return;
         }
 
-        mAvocarrotCustom = new AvocarrotCustom(context, appId, placement, "mopub");
+        NativeAssetsAd.Configuration.Builder configurationBuilder = new NativeAssetsAd.Configuration.Builder()
+                .setApiKey(appKey)
+                .setAdUnitId(adUnitId)
+                .isMopubMediation()
+                .setCallback(new NativeAssetsAdCallback() {
 
-        boolean sandbox = false;
-        try {
-            if (serverExtras.containsKey(SANDBOX)) {
-                sandbox = Boolean.parseBoolean(serverExtras.get(SANDBOX));
-            }
-        } catch (Exception e) {
-            sandbox = false;
-        }
-        boolean logger = false;
-        try {
-            if (serverExtras.containsKey(LOGGER)) {
-                logger = Boolean.parseBoolean(serverExtras.get(LOGGER));
-            }
-        } catch (Exception e) {
-            logger = false;
-        }
+                    AvocarrotNativeAd avocarrotNativeAd = null;
 
-        mAvocarrotCustom.setSandbox(sandbox);
-        mAvocarrotCustom.setLogger(logger, "ALL");
+                    @Override
+                    public void onAdLoaded(NativeAssetsAd nativeAssetsAd, List<NativeAssets> ads) {
+                        if ((ads != null) && (ads.size() > 0)) {
+                            NativeAssets model = ads.get(0);
+                            if (model != null) {
+                                avocarrotNativeAd = new AvocarrotNativeAd(model, nativeAssetsAd, context, customEventNativeListener);
+                            } else {
+                                customEventNativeListener.onNativeAdFailed(NativeErrorCode.EMPTY_AD_RESPONSE);
+                            }
+                        } else {
+                            customEventNativeListener.onNativeAdFailed(NativeErrorCode.EMPTY_AD_RESPONSE);
+                        }
+                    }
 
-        mAvocarrotCustom.setListener(new AvocarrotCustomListener() {
-
-            AvocarrotNativeAd avocarrotNativeAd = null;
-
-            @Override
-            public void onAdLoaded(List<CustomModel> ads) {
-                super.onAdLoaded(ads);
-                if ((ads != null) && (ads.size() > 0)) {
-                    CustomModel model = ads.get(0);
-                    if (model != null) {
-                        avocarrotNativeAd = new AvocarrotNativeAd(model, mAvocarrotCustom, context, customEventNativeListener);
-                    } else {
+                    @Override
+                    public void onAdError(AdError error) {
+                        super.onAdError(error);
                         customEventNativeListener.onNativeAdFailed(NativeErrorCode.EMPTY_AD_RESPONSE);
                     }
-                } else {
-                    customEventNativeListener.onNativeAdFailed(NativeErrorCode.EMPTY_AD_RESPONSE);
+
+                    @Override
+                    public void onAdImpression() {
+                        super.onAdImpression();
+                        if (avocarrotNativeAd != null)
+                            avocarrotNativeAd.notifyAdImpressed();
+                    }
+
+                    @Override
+                    public void onAdClicked() {
+                        super.onAdClicked();
+                        if (avocarrotNativeAd != null)
+                            avocarrotNativeAd.notifyAdClicked();
+                    }
+
+                });
+
+        try {
+            if (serverExtras.containsKey(SANDBOX)) {
+                configurationBuilder.setSandbox(Boolean.parseBoolean(serverExtras.get(SANDBOX)));
+            }
+        } catch (Exception e) {
+            configurationBuilder.setSandbox(false);
+        }
+        try {
+            if (serverExtras.containsKey(LOGGER)) {
+                if (Boolean.parseBoolean(serverExtras.get(LOGGER))) {
+                    configurationBuilder.setLogLevel(Level.DEBUG);
                 }
             }
+        } catch (Exception e) {
+            configurationBuilder.setLogLevel(Level.ERROR);
+        }
 
-            @Override
-            public void onAdError(AdError error) {
-                super.onAdError(error);
-                customEventNativeListener.onNativeAdFailed(NativeErrorCode.EMPTY_AD_RESPONSE);
-            }
 
-            @Override
-            public void onAdImpression() {
-                super.onAdImpression();
-                if (avocarrotNativeAd!=null)
-                    avocarrotNativeAd.notifyAdImpressed();
-            }
-
-            @Override
-            public void onAdClicked() {
-                super.onAdClicked();
-                if (avocarrotNativeAd!=null)
-                    avocarrotNativeAd.notifyAdClicked();
-            }
-
-        });
-
-        mAvocarrotCustom.loadAd();
+        Avocarrot.build(context, configurationBuilder).loadAd();
 
     }
 
     private boolean extrasAreValid(final Map<String, String> serverExtras) {
-        return (serverExtras!=null) && serverExtras.containsKey(PLACEMENT_KEY) && (serverExtras.containsKey(API_KEY));
+        return (serverExtras != null) && (serverExtras.containsKey(AD_UNIT_ID));
     }
 
     class AvocarrotNativeAd extends StaticNativeAd implements View.OnClickListener {
 
-        final CustomModel avocarrotModel;
-        final AvocarrotCustom avocarrotCustom;
+        final NativeAssets nativeAssets;
+        final NativeAssetsAd nativeAssetsAd;
 
-        public AvocarrotNativeAd(@NonNull CustomModel customModel, AvocarrotCustom avocarrotCustom, final Context context, final CustomEventNativeListener customEventNativeListener) {
+        public AvocarrotNativeAd(@NonNull NativeAssets nativeAssets, NativeAssetsAd nativeAssetsAd, final Context context, final CustomEventNativeListener customEventNativeListener) {
 
-            this.avocarrotModel = customModel;
-            this.avocarrotCustom = avocarrotCustom;
+            this.nativeAssets = nativeAssets;
+            this.nativeAssetsAd = nativeAssetsAd;
 
-            setIconImageUrl(avocarrotModel.getIconUrl());
-            setMainImageUrl(avocarrotModel.getImageUrl());
+            setIconImageUrl(nativeAssets.getIconUrl());
+            setMainImageUrl(nativeAssets.getImageUrl());
 
-            setTitle(avocarrotModel.getTitle());
-            setCallToAction(avocarrotModel.getCTAText());
-            setText(avocarrotModel.getDescription());
+            setTitle(nativeAssets.getTitle());
+            setCallToAction(nativeAssets.getCallToAction());
+            setText(nativeAssets.getText());
 
-            setClickDestinationUrl(avocarrotModel.getDestinationUrl());
+            setClickDestinationUrl(nativeAssets.getDestinationUrl());
 
-            AdChoices adChoices = avocarrotModel.getAdChoices();
-            if (adChoices!=null) {
+            AdChoices adChoices = nativeAssets.getAdChoices();
+            if (adChoices != null) {
                 setPrivacyInformationIconClickThroughUrl(adChoices.getRedirectionUrl());
                 setPrivacyInformationIconImageUrl(adChoices.getIconUrl());
             }
@@ -169,13 +168,14 @@ public class AvocarrotNativeMopub extends CustomEventNative {
         @Override
         public void prepare(final View view) {
             super.prepare(view);
-            avocarrotCustom.bindView(avocarrotModel, view, null);
+            AdLayout adLayout = new AdLayout.BuilderWithView(view).build();
+            nativeAssetsAd.bindView(adLayout, nativeAssets);
             view.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            avocarrotCustom.handleClick(avocarrotModel);
+            nativeAssetsAd.handleClick(nativeAssets);
         }
 
     }

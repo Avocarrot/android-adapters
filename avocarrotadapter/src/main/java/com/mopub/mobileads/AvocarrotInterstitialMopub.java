@@ -3,17 +3,19 @@ package com.mopub.mobileads;
 import android.app.Activity;
 import android.content.Context;
 
-import com.avocarrot.androidsdk.AdError;
-import com.avocarrot.androidsdk.AvocarrotInterstitial;
-import com.avocarrot.androidsdk.AvocarrotInterstitialListener;
+import com.avocarrot.sdk.AdError;
+import com.avocarrot.sdk.Avocarrot;
+import com.avocarrot.sdk.InterstitialAd;
+import com.avocarrot.sdk.InterstitialAdCallback;
+import com.avocarrot.sdk.logger.Level;
 
 import java.util.Map;
 
-/* Compatible with Avocarrot SDK 3.5.0+ */
+/* Compatible with Avocarrot SDK 4.+ */
 
 public class AvocarrotInterstitialMopub extends CustomEventInterstitial {
 
-    private static final String PLACEMENT_KEY = "placementKey";
+    private static final String AD_UNIT_ID = "adUnitId";
     private static final String API_KEY = "apiKey";
 
     private static final String SANDBOX = "sandbox";
@@ -21,9 +23,9 @@ public class AvocarrotInterstitialMopub extends CustomEventInterstitial {
 
     CustomEventInterstitialListener customEventInterstitialListener;
 
-    AvocarrotInterstitial mAvocarrotInterstitial;
+    InterstitialAd mAvocarrotInterstitial;
 
-    AvocarrotInterstitialListener mAvocarrorListener = new AvocarrotInterstitialListener() {
+    private InterstitialAdCallback mAvocarrorCallback = new InterstitialAdCallback() {
         @Override
         public void onAdLoaded() {
             super.onAdLoaded();
@@ -58,41 +60,42 @@ public class AvocarrotInterstitialMopub extends CustomEventInterstitial {
     @Override
     protected void loadInterstitial(Context context, CustomEventInterstitialListener customEventInterstitialListener, Map<String, Object> localExtras, Map<String, String> serverExtras) {
 
-        final String placement;
-        final String appId;
+        String adUnitId;
+        String appKey;
         if (extrasAreValid(serverExtras)) {
-            placement = serverExtras.get(PLACEMENT_KEY);
-            appId = serverExtras.get(API_KEY);
+            appKey = serverExtras.get(API_KEY);
+            adUnitId = serverExtras.get(AD_UNIT_ID);
         } else {
             customEventInterstitialListener.onInterstitialFailed(MoPubErrorCode.ADAPTER_CONFIGURATION_ERROR);
             return;
         }
 
-        mAvocarrotInterstitial = new AvocarrotInterstitial((Activity)context, appId, placement, "mopub");
+        InterstitialAd.Configuration.Builder configurationBuilder = new InterstitialAd.Configuration.Builder()
+                .setApiKey(appKey)
+                .setAdUnitId(adUnitId)
+                .isMopubMediation()
+                .setCallback(mAvocarrorCallback);
 
-        boolean sandbox = false;
         try {
             if (serverExtras.containsKey(SANDBOX)) {
-                sandbox = Boolean.parseBoolean(serverExtras.get(SANDBOX));
+                configurationBuilder.setSandbox(Boolean.parseBoolean(serverExtras.get(SANDBOX)));
             }
         } catch (Exception e) {
-            sandbox = false;
+            configurationBuilder.setSandbox(false);
         }
-        boolean logger = false;
         try {
             if (serverExtras.containsKey(LOGGER)) {
-                logger = Boolean.parseBoolean(serverExtras.get(LOGGER));
+                if (Boolean.parseBoolean(serverExtras.get(LOGGER))) {
+                    configurationBuilder.setLogLevel(Level.DEBUG);
+                }
             }
         } catch (Exception e) {
-            logger = false;
+            configurationBuilder.setLogLevel(Level.ERROR);
         }
 
-        mAvocarrotInterstitial.setSandbox(sandbox);
-        mAvocarrotInterstitial.setLogger(logger, "ALL");
-        mAvocarrotInterstitial.setCarouselMode(false);
-        mAvocarrotInterstitial.loadAd();
-        mAvocarrotInterstitial.setListener(mAvocarrorListener);
         this.customEventInterstitialListener = customEventInterstitialListener;
+        mAvocarrotInterstitial = Avocarrot.build((Activity) context, configurationBuilder);
+        mAvocarrotInterstitial.loadAd();
 
     }
 
@@ -103,12 +106,12 @@ public class AvocarrotInterstitialMopub extends CustomEventInterstitial {
 
     @Override
     protected void onInvalidate() {
-        if(mAvocarrotInterstitial!=null)
+        if (mAvocarrotInterstitial != null)
             mAvocarrotInterstitial.clear();
     }
 
     private boolean extrasAreValid(final Map<String, String> serverExtras) {
-        return (serverExtras!=null) && serverExtras.containsKey(PLACEMENT_KEY) && (serverExtras.containsKey(API_KEY));
+        return (serverExtras != null) && (serverExtras.containsKey(AD_UNIT_ID));
     }
 
 }

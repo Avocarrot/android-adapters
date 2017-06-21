@@ -63,11 +63,11 @@ com.mopub.mobileads.AvocarrotInterstitialMopub
 
 **Custom Event Class Data**
 ```javascript
-{"apiKey":"<AvocarrotApiKey>","placementKey":"<AvocarrotPlacementKey>"}
+{"adUnitId":"<Avocarrot AdUnitId>", "apiKey":"<Avocarrot Api Key>"}
 ```
 
-Get your api & placement keys from the [Avocarrot Dashboard](https://app.avocarrot.com/#/apps/overview).
-Please note that for `Mopub Interstitial` you should create an `Avocarrot "Natural Pause"` placement. 
+Get your adUnitId from the [Avocarrot Dashboard](https://ssp.avocarrot.com).
+Please note that for `Mopub Interstitial` you should create an `Avocarrot "Natural Pause"` Ad Unit. 
 
 - Include the [`AvocarrotInterstitialMopub`](https://github.com/Avocarrot/android-adapter/blob/master/avocarrotadapter/src/main/java/com/mopub/mobileads/AvocarrotInterstitialMopub.java) in your project.
 
@@ -86,11 +86,11 @@ com.mopub.nativeads.AvocarrotNativeMopub
 
 **Custom Event Class Data**
 ```javascript
-{"apiKey":"<AvocarrotApiKey>","placementKey":"<AvocarrotPlacementKey>"}
+{"adUnitId":"<AvocarrotAdUnitId>", "apiKey":"<Avocarrot Api Key>"}
 ```
 
-Get your api & placement keys from the [Avocarrot Dashboard](https://app.avocarrot.com/#/apps/overview).
-Please note that for `Mopub Native` you should create an `Avocarrot "Create your own"` placement. 
+Get your adUnitId from the [Avocarrot Dashboard](https://ssp.avocarrot.com).
+Please note that for `Mopub Native` you should create an `Avocarrot "Create your own"` Ad Unit. 
 
 - Include the [`AvocarrotNativeMopub`](https://github.com/Avocarrot/android-adapter/blob/master/avocarrotadapter/src/main/java/com/mopub/nativeads/AvocarrotNativeMopub.java) in your project.
 
