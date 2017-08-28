@@ -19,7 +19,7 @@ repositories {
 }
 
 dependencies {
-  compile 'com.avocarrot.sdk:adapter-mopub-interstitial:1.4.0'
+  compile 'com.avocarrot.sdk:adapter-mopub-interstitial:1.4.1'
 }
 ```
 

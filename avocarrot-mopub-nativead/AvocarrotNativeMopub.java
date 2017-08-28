@@ -28,12 +28,15 @@ import java.util.Map;
 @Keep
 @SuppressWarnings({"WeakerAccess", "unused"})
 public class AvocarrotNativeMopub extends CustomEventNative {
-    private static final String AD_UNIT = "adUnit";
+    @NonNull
+    private static final String AD_UNIT_KEY = "adUnit";
+    @NonNull
+    private static final String AD_UNIT_ID_KEY = "adUnitId";
 
     @Override
     protected void loadNativeAd(@NonNull final Context context, @NonNull final CustomEventNativeListener mopubListener,
                                 @NonNull final Map<String, Object> localExtras, @NonNull final Map<String, String> serverExtras) {
-        final String adUnitId = serverExtras.get(AD_UNIT);
+        final String adUnitId = serverExtras.containsKey(AD_UNIT_ID_KEY) ? serverExtras.get(AD_UNIT_ID_KEY) : serverExtras.get(AD_UNIT_KEY);
         if (TextUtils.isEmpty(adUnitId)) {
             mopubListener.onNativeAdFailed(NativeErrorCode.NATIVE_ADAPTER_CONFIGURATION_ERROR);
             return;

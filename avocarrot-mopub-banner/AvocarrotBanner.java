@@ -22,7 +22,9 @@ import java.util.Map;
 @SuppressWarnings({"WeakerAccess", "unused"})
 public class AvocarrotBanner extends CustomEventBanner implements BannerAdCallback {
     @NonNull
-    private static final String AD_UNIT_ID_KEY = "adUnit";
+    private static final String AD_UNIT_KEY = "adUnit";
+    @NonNull
+    private static final String AD_UNIT_ID_KEY = "adUnitId";
     @Nullable
     private BannerAd bannerAd;
     @Nullable
@@ -77,7 +79,7 @@ public class AvocarrotBanner extends CustomEventBanner implements BannerAdCallba
             listener.onBannerFailed(MoPubErrorCode.ADAPTER_CONFIGURATION_ERROR);
             return;
         }
-        final String adUnitId = serverExtras.get(AD_UNIT_ID_KEY);
+        final String adUnitId = serverExtras.containsKey(AD_UNIT_ID_KEY) ? serverExtras.get(AD_UNIT_ID_KEY) : serverExtras.get(AD_UNIT_KEY);
         if (TextUtils.isEmpty(adUnitId)) {
             Logger.warn("Failed to request banner ad, [adUnitId] is empty");
             listener.onBannerFailed(MoPubErrorCode.ADAPTER_CONFIGURATION_ERROR);
