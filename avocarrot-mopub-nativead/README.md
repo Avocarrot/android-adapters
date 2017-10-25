@@ -4,8 +4,8 @@ This is an adapter to be used in conjunction with the MoPub Android SDK.
 
 ## Requirements
 
-* MoPub Android SDK v4.15.0 or later.
-* Avocarrot Android SDK v4.6.1 or later.
+* MoPub Android SDK v4.17.0 or later.
+* Avocarrot Android SDK v4.7.0 or later.
 
 ## Instructions
 
@@ -16,10 +16,11 @@ Add the compile dependency with the latest version of the **Avocarrot** adapter 
 ```
 repositories {
   maven { url  "https://s3.amazonaws.com/avocarrot-android-builds/dist" }
+  maven { url "https://s3.amazonaws.com/moat-sdk-builds" } // required by mopub (more info: https://github.com/mopub/mopub-android-sdk#download)
 }
 
 dependencies {
-  compile 'com.avocarrot.sdk:adapter-mopub-nativead:1.4.2'
+  compile 'com.avocarrot.sdk:adapter-mopub-nativead:1.4.3'
 }
 ```
 
