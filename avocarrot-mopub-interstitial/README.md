@@ -4,8 +4,8 @@ This is an adapter to be used in conjunction with the MoPub Android SDK.
 
 ## Requirements
 
-* MoPub Android SDK v4.17.0 or later.
-* Avocarrot Android SDK v4.7.0 or later.
+* MoPub Android SDK v4.18.0 or later.
+* Avocarrot Android SDK v4.7.1 or later.
 
 ## Instructions
 
@@ -20,7 +20,7 @@ repositories {
 }
 
 dependencies {
-  compile 'com.avocarrot.sdk:adapter-mopub-interstitial:1.4.3'
+  compile 'com.avocarrot.sdk:adapter-mopub-interstitial:1.4.4'
 }
 ```
 
