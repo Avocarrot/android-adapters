@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Adapters</string>
+    <!-- -->
+    <string name="endpoints">Endpoints</string>
+    <string name="ad_type_banner">Banner</string>
+    <string name="ad_type_interstitial">Interstitial</string>
+    <string name="ad_type_native">Native</string>
+    <!-- -->
+    <string name="mopub">MoPub</string>
+    <string name="mopub_native">MoPub Native</string>
+    <string name="mopub_config">MoPub Config</string>
+    <!-- -->
+    <string name="admob">AdMob</string>
+    <string name="admob_config">AdMob Config</string>
+    <!-- -->
+    <string name="dfp">DoubleClick</string>
+    <string name="dfp_config">DoubleClick Config</string>
+    <!-- -->
+    <string name="prompt_ad_unit_id">Enter Ad Unit Id</string>
+    <string name="action_next">Next</string>
+    <string name="error_field_required">This field is required</string>
+    <!-- -->
+    <string name="native_main_image">Main image</string>
+    <string name="native_privacy_information_icon_image">Privacy Information Icon image</string>
+    <string name="learn_more">Learn More</string>
+    <string name="load_interstitial">Load Interstitial</string>
+</resources>

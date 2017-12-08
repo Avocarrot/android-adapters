@@ -1,6 +1,6 @@
-# Avocarrot Banner Ads Adapter for AdMob Android SDK
+# Avocarrot Banner Ads Adapter for AdMob and DFP Android SDK
 
-This is an adapter to be used in conjunction with the AdMob Android SDK.
+This is an adapter to be used in conjunction with the AdMob or DFP Android SDK.
 
 ## Requirements
 

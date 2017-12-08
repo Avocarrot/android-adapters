@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="adapters">
+        <item>@string/mopub</item>
+        <item>@string/admob</item>
+        <item>@string/dfp</item>
+    </string-array>
+    <string-array name="adbmob_ad_types">
+        <item>@string/ad_type_native</item>
+        <item>@string/ad_type_banner</item>
+        <item>@string/ad_type_interstitial</item>
+    </string-array>
+    <string-array name="mopub_ad_types">
+        <item>@string/ad_type_native</item>
+        <item>@string/ad_type_banner</item>
+        <item>@string/ad_type_interstitial</item>
+    </string-array>
+    <string-array name="dfp_ad_types">
+        <item>@string/ad_type_banner</item>
+        <item>@string/ad_type_interstitial</item>
+    </string-array>
+</resources>

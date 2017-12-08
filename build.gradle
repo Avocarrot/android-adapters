@@ -1,0 +1,24 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'de.felixschulze.gradle:gradle-hockeyapp-plugin:3.5'
+    }
+}
+plugins {
+    id 'com.github.dcendents.android-maven' version '1.5'
+    id 'com.github.ben-manes.versions' version '0.15.0'
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        maven { url "https://maven.google.com" }
+        maven { url "https://s3.amazonaws.com/avocarrot-android-builds/dist/" }
+    }
+
+    group = 'com.avocarrot.sdk'
+    project.version = VERSION_NAME
+}

@@ -1,0 +1,56 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+    buildToolsVersion "27.0.2"
+
+    defaultConfig {
+        minSdkVersion 16
+        //noinspection OldTargetApi
+        targetSdkVersion 27
+
+        versionCode 1
+        versionName VERSION_NAME
+
+        applicationId "com.avocarrot.adapters.sample"
+        multiDexEnabled = true
+
+        buildConfigField "String", "LOG_TAG", "\"Avocarrot\""
+    }
+
+    dexOptions {
+        javaMaxHeapSize "2g"
+    }
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+    }
+    productFlavors {
+        pub {
+            applicationId "${defaultConfig.applicationId}.public"
+        }
+    }
+}
+
+repositories {
+    maven { url "https://s3.amazonaws.com/moat-sdk-builds" }
+}
+
+dependencies {
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.android.support:appcompat-v7:27.0.2'
+    compile 'com.android.support:design:27.0.2'
+    compile 'com.facebook.stetho:stetho:1.5.0'
+    compile 'com.jakewharton:process-phoenix:2.0.0'
+    compile 'com.squareup.leakcanary:leakcanary-android:1.5.1'
+    compile 'org.jooq:joor:0.9.6'
+    //
+    compile('com.mopub:mopub-sdk-native-static:4.18.0@aar') {
+        transitive = true
+    }
+    compile 'com.avocarrot.sdk:adapter-mopub-nativead:1.4.4'
+    compile 'com.avocarrot.sdk:adapter-mopub-banner:1.4.4'
+    compile 'com.avocarrot.sdk:adapter-mopub-interstitial:1.4.4'
+    compile 'com.avocarrot.sdk:adapter-admob-banner:1.4.4'
+    compile 'com.avocarrot.sdk:adapter-admob-interstitial:1.4.4'
+    compile 'com.avocarrot.sdk:adapter-admob-nativead:1.4.4'
+}

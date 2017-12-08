@@ -1,12 +1,19 @@
 Hosts ad network adapters for mediation using the Avocarrot Ads SDK. 
 
+###AdMob
+* [Banner Ads Adapter](avocarrot-admob-banner/README.md)
+* [Interstitial Ads Adapter](avocarrot-admob-interstitial/README.md)
+* [Native Ads Adapter](avocarrot-admob-nativead/README.md)
 
-* [Avocarrot Banner Ads Adapter for AdMob Android SDK](avocarrot-admob-banner/README.md)
-* [Avocarrot Interstitial Ads Adapter for AdMob Android SDK](avocarrot-admob-interstitial/README.md)
-* [Avocarrot Native Ads Adapter for AdMob Android SDK](avocarrot-admob-nativead/README.md)
-* [Avocarrot Banner Ads Adapter for MoPub Android SDK](avocarrot-mopub-banner/README.md)
-* [Avocarrot Interstitial Ads Adapter for MoPub Android SDK](avocarrot-mopub-interstitial/README.md)
-* [Avocarrot Native Ads Adapter for MoPub Android SDK](avocarrot-mopub-nativead/README.md)
+###DoubleClick
+AdMob adapters could be used for DFP banners and interstitials
 
+* [Banner Ads Adapter](avocarrot-admob-banner/README.md)
+* [Interstitial Ads Adapter](avocarrot-admob-interstitial/README.md)
 
-For any technical help or questions, please get in touch with Avocarrot Support: support@avocarrot.com
+###Mopub
+* [Banner Ads Adapter](avocarrot-mopub-banner/README.md)
+* [Interstitial Ads Adapter](avocarrot-mopub-interstitial/README.md)
+* [Native Ads Adapter](avocarrot-mopub-nativead/README.md)
+
+For any technical help or questions, please get in touch with Avocarrot Support: [support@avocarrot.com](mailto:support@avocarrot.com)

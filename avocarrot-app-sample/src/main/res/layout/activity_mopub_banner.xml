@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mopub.mobileads.MoPubView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/adview"
+    android:layout_width="320dp"
+    android:layout_height="50dp"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginTop="@dimen/activity_horizontal_margin"/>
