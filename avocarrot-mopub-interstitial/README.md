@@ -5,7 +5,7 @@ This is an adapter to be used in conjunction with the MoPub Android SDK.
 ## Requirements
 
 * MoPub Android SDK v4.18.0 or later.
-* Avocarrot Android SDK v4.7.1 or later.
+* Avocarrot Android SDK v4.7.3 or later.
 
 ## Instructions
 
@@ -16,16 +16,15 @@ Add the compile dependency with the latest version of the **Avocarrot** adapter 
 ```
 repositories {
   maven { url  "https://s3.amazonaws.com/avocarrot-android-builds/dist" }
-  maven { url "https://s3.amazonaws.com/moat-sdk-builds" } // required by mopub (more info: https://github.com/mopub/mopub-android-sdk#download)
 }
 
 dependencies {
-  compile 'com.avocarrot.sdk:adapter-mopub-interstitial:1.4.4'
+  compile 'com.avocarrot.sdk:adapter-mopub-interstitial:1.4.7'
 }
 ```
 
-The Ampiri SDK should be initialised and started before requiring for ads. To ensure that the metrics are not over-counted, it is highly recommended 
-that the Ampiri SDK be called in the `Application` class.
+The Avocarrot SDK should be initialised and started before requiring for ads. To ensure that the metrics are not over-counted, it is highly recommended
+that the Avocarrot SDK be called in the `Application` class.
 
 ```java
 public class YourApplication extends Application {

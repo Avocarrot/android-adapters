@@ -4,7 +4,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
-        classpath 'de.felixschulze.gradle:gradle-hockeyapp-plugin:3.5'
+        classpath 'de.felixschulze.gradle:gradle-hockeyapp-plugin:3.6'
     }
 }
 plugins {

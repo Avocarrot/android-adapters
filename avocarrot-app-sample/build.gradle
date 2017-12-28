@@ -31,10 +31,6 @@ android {
     }
 }
 
-repositories {
-    maven { url "https://s3.amazonaws.com/moat-sdk-builds" }
-}
-
 dependencies {
     compile 'com.android.support:multidex:1.0.1'
     compile 'com.android.support:appcompat-v7:27.0.2'
@@ -44,13 +40,10 @@ dependencies {
     compile 'com.squareup.leakcanary:leakcanary-android:1.5.1'
     compile 'org.jooq:joor:0.9.6'
     //
-    compile('com.mopub:mopub-sdk-native-static:4.18.0@aar') {
-        transitive = true
-    }
-    compile 'com.avocarrot.sdk:adapter-mopub-nativead:1.4.4'
-    compile 'com.avocarrot.sdk:adapter-mopub-banner:1.4.4'
-    compile 'com.avocarrot.sdk:adapter-mopub-interstitial:1.4.4'
-    compile 'com.avocarrot.sdk:adapter-admob-banner:1.4.4'
-    compile 'com.avocarrot.sdk:adapter-admob-interstitial:1.4.4'
-    compile 'com.avocarrot.sdk:adapter-admob-nativead:1.4.4'
+    compile project(':adapter-mopub-nativead')
+    compile project(':adapter-mopub-banner')
+    compile project(':adapter-mopub-interstitial')
+    compile project(':adapter-admob-banner')
+    compile project(':adapter-admob-interstitial')
+    compile project(':adapter-admob-nativead')
 }

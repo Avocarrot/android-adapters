@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.Keep;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresPermission;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
@@ -48,6 +49,7 @@ public class NativeAdapter implements CustomEventNative {
     private boolean nativeImpressionRecorded;
 
     //region CustomEventNative
+    @RequiresPermission("android.permission.INTERNET")
     @Override
     public void requestNativeAd(@Nullable final Context context, @Nullable final CustomEventNativeListener listener, @Nullable final String adUnitId,
                                 @Nullable final NativeMediationAdRequest adRequest, @Nullable final Bundle customEventExtras) {
@@ -104,65 +106,6 @@ public class NativeAdapter implements CustomEventNative {
     public void onResume() {
     }
     //endregion
-
-    private class AdCallback implements NativeAssetsAdCallback {
-        @NonNull
-        private final CustomEventNativeListener listener;
-        @NonNull
-        private final NativeMediationAdRequest adRequest;
-        private final int adChoicePlacement;
-
-        public AdCallback(@NonNull final CustomEventNativeListener listener, @NonNull final NativeMediationAdRequest adRequest, final int adChoicePlacement) {
-            this.listener = listener;
-            this.adRequest = adRequest;
-            this.adChoicePlacement = adChoicePlacement;
-        }
-
-        @Override
-        public void onAdLoaded(@NonNull final NativeAssetsAd nativeAssetsAd, @NonNull final NativeAssets nativeAssets) {
-            if (NativeAdapter.this.nativeAssetsAd != nativeAssetsAd) {
-                Logger.warn("Ad loaded is not a native ad.");
-                listener.onAdFailedToLoad(AdRequest.ERROR_CODE_INTERNAL_ERROR);
-                return;
-            }
-            NativeAdMapper adMapper = null;
-            if (adRequest.isAppInstallAdRequested()) {
-                adMapper = new AvocarrotNativeAppInstallAdMapper(nativeAssetsAd, nativeAssets, adChoicePlacement);
-            } else if (adRequest.isContentAdRequested()) {
-                adMapper = new AvocarrotNativeContentAdMapper(nativeAssetsAd, nativeAssets, adChoicePlacement);
-            }
-            if (adMapper == null) {
-                Logger.warn("Failed to request native ad, both app install and content ad is null");
-                listener.onAdFailedToLoad(AdRequest.ERROR_CODE_INVALID_REQUEST);
-                return;
-            }
-            listener.onAdLoaded(adMapper);
-        }
-
-        @Override
-        public void onAdFailed(@NonNull final NativeAssetsAd nativeAssetsAd, @NonNull final ResponseStatus responseStatus) {
-            final int error = responseStatus == ResponseStatus.EMPTY ? AdRequest.ERROR_CODE_NO_FILL : AdRequest.ERROR_CODE_INTERNAL_ERROR;
-            listener.onAdFailedToLoad(error);
-        }
-
-        @Override
-        public void onAdOpened(@NonNull final NativeAssetsAd nativeAssetsAd) {
-            if (nativeImpressionRecorded) {
-                Logger.debug("Received [onAdOpened] callback for a native whose impression is already recorded. Ignoring the duplicate callback.");
-                return;
-            }
-            listener.onAdImpression();
-            nativeImpressionRecorded = true;
-        }
-
-        @Override
-        public void onAdClicked(@NonNull final NativeAssetsAd nativeAssetsAd) {
-            listener.onAdClicked();
-            // Assuming all the ads leave the application when the ad is clicked,
-            // sending onAdLeftApplication callback when the ad is clicked.
-            listener.onAdLeftApplication();
-        }
-    }
 
     /**
      * A {@link NativeAppInstallAdMapper} used to map a Avocarrot NativeAssetsAd to Google native app install native ad.
@@ -409,6 +352,65 @@ public class NativeAdapter implements CustomEventNative {
             public double getScale() {
                 return scale;
             }
+        }
+    }
+
+    private class AdCallback implements NativeAssetsAdCallback {
+        @NonNull
+        private final CustomEventNativeListener listener;
+        @NonNull
+        private final NativeMediationAdRequest adRequest;
+        private final int adChoicePlacement;
+
+        public AdCallback(@NonNull final CustomEventNativeListener listener, @NonNull final NativeMediationAdRequest adRequest, final int adChoicePlacement) {
+            this.listener = listener;
+            this.adRequest = adRequest;
+            this.adChoicePlacement = adChoicePlacement;
+        }
+
+        @Override
+        public void onAdLoaded(@NonNull final NativeAssetsAd nativeAssetsAd, @NonNull final NativeAssets nativeAssets) {
+            if (NativeAdapter.this.nativeAssetsAd != nativeAssetsAd) {
+                Logger.warn("Ad loaded is not a native ad.");
+                listener.onAdFailedToLoad(AdRequest.ERROR_CODE_INTERNAL_ERROR);
+                return;
+            }
+            NativeAdMapper adMapper = null;
+            if (adRequest.isAppInstallAdRequested()) {
+                adMapper = new AvocarrotNativeAppInstallAdMapper(nativeAssetsAd, nativeAssets, adChoicePlacement);
+            } else if (adRequest.isContentAdRequested()) {
+                adMapper = new AvocarrotNativeContentAdMapper(nativeAssetsAd, nativeAssets, adChoicePlacement);
+            }
+            if (adMapper == null) {
+                Logger.warn("Failed to request native ad, both app install and content ad is null");
+                listener.onAdFailedToLoad(AdRequest.ERROR_CODE_INVALID_REQUEST);
+                return;
+            }
+            listener.onAdLoaded(adMapper);
+        }
+
+        @Override
+        public void onAdFailed(@NonNull final NativeAssetsAd nativeAssetsAd, @NonNull final ResponseStatus responseStatus) {
+            final int error = responseStatus == ResponseStatus.EMPTY ? AdRequest.ERROR_CODE_NO_FILL : AdRequest.ERROR_CODE_INTERNAL_ERROR;
+            listener.onAdFailedToLoad(error);
+        }
+
+        @Override
+        public void onAdOpened(@NonNull final NativeAssetsAd nativeAssetsAd) {
+            if (nativeImpressionRecorded) {
+                Logger.debug("Received [onAdOpened] callback for a native whose impression is already recorded. Ignoring the duplicate callback.");
+                return;
+            }
+            listener.onAdImpression();
+            nativeImpressionRecorded = true;
+        }
+
+        @Override
+        public void onAdClicked(@NonNull final NativeAssetsAd nativeAssetsAd) {
+            listener.onAdClicked();
+            // Assuming all the ads leave the application when the ad is clicked,
+            // sending onAdLeftApplication callback when the ad is clicked.
+            listener.onAdLeftApplication();
         }
     }
 }

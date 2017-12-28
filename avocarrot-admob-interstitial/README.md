@@ -4,8 +4,8 @@ This is an adapter to be used in conjunction with the AdMob or DFP Android SDK.
 
 ## Requirements
 
-* Google Mobile Ads SDK version 11.4.2.
-* Avocarrot Android SDK v4.7.1.
+* Google Mobile Ads SDK version 11.8.0.
+* Avocarrot Android SDK v4.7.3.
 
 ## Instructions
 
@@ -19,7 +19,7 @@ repositories {
 }
 
 dependencies {
-  compile 'com.avocarrot.sdk:adapter-admob-interstitial:1.4.4'
+  compile 'com.avocarrot.sdk:adapter-admob-interstitial:1.4.7'
 }
 ```
 
