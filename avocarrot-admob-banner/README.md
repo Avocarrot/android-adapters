@@ -5,7 +5,7 @@ This is an adapter to be used in conjunction with the AdMob or DFP Android SDK.
 ## Requirements
 
 * Google Mobile Ads SDK version 11.8.0.
-* Avocarrot Android SDK v4.7.3.
+* Avocarrot Android SDK v4.7.5.
 
 ## Instructions
 
