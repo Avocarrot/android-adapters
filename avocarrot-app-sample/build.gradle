@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion "27.0.2"
+    buildToolsVersion "27.0.3"
 
     defaultConfig {
         minSdkVersion 16
@@ -24,17 +24,12 @@ android {
     packagingOptions {
         exclude 'META-INF/LICENSE.txt'
     }
-    productFlavors {
-        pub {
-            applicationId "${defaultConfig.applicationId}.public"
-        }
-    }
 }
 
 dependencies {
-    compile 'com.android.support:multidex:1.0.1'
-    compile 'com.android.support:appcompat-v7:27.0.2'
-    compile 'com.android.support:design:27.0.2'
+    compile 'com.android.support:multidex:1.0.3'
+    compile 'com.android.support:appcompat-v7:27.1.0'
+    compile 'com.android.support:design:27.1.0'
     compile 'com.facebook.stetho:stetho:1.5.0'
     compile 'com.jakewharton:process-phoenix:2.0.0'
     compile 'com.squareup.leakcanary:leakcanary-android:1.5.1'

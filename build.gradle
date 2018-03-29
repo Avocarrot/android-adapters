@@ -1,9 +1,10 @@
 buildscript {
     repositories {
         jcenter()
+        google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'com.android.tools.build:gradle:3.0.1'
         classpath 'de.felixschulze.gradle:gradle-hockeyapp-plugin:3.6'
     }
 }
@@ -17,6 +18,15 @@ allprojects {
         jcenter()
         maven { url "https://maven.google.com" }
         maven { url "https://s3.amazonaws.com/avocarrot-android-builds/dist/" }
+//        maven {
+//            credentials {
+//                username GLISPA_COM_NEXUS_USERNAME
+//                password GLISPA_COM_NEXUS_PASSWORD
+//            }
+//            url "${GLISPA_COM_NEXUS_URL}:8081/repository/maven-releases"
+//        }
+
+        google()
     }
 
     group = 'com.avocarrot.sdk'
