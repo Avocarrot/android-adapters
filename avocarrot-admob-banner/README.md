@@ -5,7 +5,7 @@ This is an adapter to be used in conjunction with the AdMob or DFP Android SDK.
 ## Requirements
 
 * Google Mobile Ads SDK version 11.8.0.
-* Avocarrot Android SDK v4.8.0
+* Avocarrot Android SDK v4.8.1
 
 ## Instructions
 
@@ -19,7 +19,7 @@ repositories {
 }
 
 dependencies {
-  compile 'com.avocarrot.sdk:adapter-admob-banner:1.4.10'
+  compile 'com.avocarrot.sdk:adapter-admob-banner:1.4.11'
 }
 ```
 
