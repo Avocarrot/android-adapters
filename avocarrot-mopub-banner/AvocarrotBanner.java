@@ -104,6 +104,9 @@ public class AvocarrotBanner extends CustomEventBanner implements BannerAdCallba
         if (height == BannerSize.BANNER_SIZE_320x50.height && width == BannerSize.BANNER_SIZE_320x50.width) {
             return BannerSize.BANNER_SIZE_320x50;
         }
+        if (height == BannerSize.BANNER_SIZE_300x250.height && width == BannerSize.BANNER_SIZE_300x250.width) {
+            return BannerSize.BANNER_SIZE_300x250;
+        }
         if (height == BannerSize.BANNER_SIZE_728x90.height && width == BannerSize.BANNER_SIZE_728x90.width) {
             return BannerSize.BANNER_SIZE_728x90;
         }
