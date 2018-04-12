@@ -19,7 +19,7 @@ repositories {
 }
 
 dependencies {
-  compile 'com.avocarrot.sdk:adapter-mopub-nativead:1.4.11'
+  compile 'com.avocarrot.sdk:adapter-mopub-nativead:1.4.12'
 }
 ```
 
