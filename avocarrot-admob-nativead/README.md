@@ -5,7 +5,7 @@ This is an adapter to be used in conjunction with the AdMob Android SDK.
 ## Requirements
 
 * Google Mobile Ads SDK version 11.8.0.
-* Avocarrot Android SDK v4.8.1.
+* Avocarrot Android SDK v4.9.0.
 
 ## Instructions
 
@@ -19,7 +19,7 @@ repositories {
 }
 
 dependencies {
-  compile 'com.avocarrot.sdk:adapter-admob-nativead:1.4.12'
+  compile 'com.avocarrot.sdk:adapter-admob-nativead:1.4.11'
 }
 ```
 

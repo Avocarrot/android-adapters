@@ -25,6 +25,16 @@ import com.google.android.gms.ads.mediation.customevent.CustomEventBannerListene
 @Keep
 @SuppressWarnings({"WeakerAccess", "unused"})
 public class BannerAdapter implements CustomEventBanner {
+
+    BannerSize[] availableSizes = new BannerSize[]{
+            BannerSize.BANNER_SIZE_320x50,
+            BannerSize.BANNER_SIZE_728x90,
+            BannerSize.BANNER_SIZE_300x250,
+            BannerSize.BANNER_SIZE_468x60,
+            BannerSize.BANNER_SIZE_160x600,
+            BannerSize.BANNER_SIZE_300x50
+    };
+
     @Nullable
     private BannerAd bannerAd;
     @Nullable
@@ -103,11 +113,10 @@ public class BannerAdapter implements CustomEventBanner {
     private BannerSize getAvoBannerSize(@NonNull final AdSize adMobAdSize) {
         final int height = adMobAdSize.getHeight();
         final int width = adMobAdSize.getWidth();
-        if (height == BannerSize.BANNER_SIZE_320x50.height && width == BannerSize.BANNER_SIZE_320x50.width) {
-            return BannerSize.BANNER_SIZE_320x50;
-        }
-        if (height == BannerSize.BANNER_SIZE_728x90.height && width == BannerSize.BANNER_SIZE_728x90.width) {
-            return BannerSize.BANNER_SIZE_728x90;
+        for (BannerSize bs : availableSizes) {
+            if (bs.height == height && bs.width == width) {
+                return bs;
+            }
         }
         return null;
     }
