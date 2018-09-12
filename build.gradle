@@ -18,14 +18,6 @@ allprojects {
         jcenter()
         maven { url "https://maven.google.com" }
         maven { url "https://s3.amazonaws.com/avocarrot-android-builds/dist/" }
-//        maven {
-//            credentials {
-//                username GLISPA_COM_NEXUS_USERNAME
-//                password GLISPA_COM_NEXUS_PASSWORD
-//            }
-//            url "${GLISPA_COM_NEXUS_URL}:8081/repository/maven-releases"
-//        }
-
         google()
     }
 
