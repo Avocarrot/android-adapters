@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion "27.0.3"
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
 
     defaultConfig {
         minSdkVersion 16
         //noinspection OldTargetApi
-        targetSdkVersion 27
+        targetSdkVersion 28
 
         versionCode 1
         versionName VERSION_NAME
@@ -27,18 +27,18 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:multidex:1.0.3'
-    compile 'com.android.support:appcompat-v7:27.1.0'
-    compile 'com.android.support:design:27.1.0'
-    compile 'com.facebook.stetho:stetho:1.5.0'
-    compile 'com.jakewharton:process-phoenix:2.0.0'
-    compile 'com.squareup.leakcanary:leakcanary-android:1.5.1'
-    compile 'org.jooq:joor:0.9.6'
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.facebook.stetho:stetho:1.5.0'
+    implementation 'com.jakewharton:process-phoenix:2.0.0'
+    implementation 'com.squareup.leakcanary:leakcanary-android:1.5.1'
+    implementation 'org.jooq:joor:0.9.6'
     //
-    compile project(':adapter-mopub-nativead')
-    compile project(':adapter-mopub-banner')
-    compile project(':adapter-mopub-interstitial')
-    compile project(':adapter-admob-banner')
-    compile project(':adapter-admob-interstitial')
-    compile project(':adapter-admob-nativead')
+    implementation project(':adapter-mopub-nativead')
+    implementation project(':adapter-mopub-banner')
+    implementation project(':adapter-mopub-interstitial')
+    implementation project(':adapter-admob-banner')
+    implementation project(':adapter-admob-interstitial')
+    implementation project(':adapter-admob-nativead')
 }

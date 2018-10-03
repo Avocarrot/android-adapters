@@ -4,8 +4,8 @@ This is an adapter to be used in conjunction with the MoPub Android SDK.
 
 ## Requirements
 
-* MoPub Android SDK v4.18.0 or later.
-* Avocarrot Android SDK v4.10.1 or later.
+* MoPub Android SDK v5.3.0 or later.
+* Avocarrot Android SDK v4.10.3 or later.
 
 ## Instructions
 

@@ -1,5 +1,6 @@
 package com.avocarrot.adapters.sample.mopub;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,6 +20,10 @@ import android.widget.TextView;
 import com.avocarrot.adapters.sample.IntentStarter;
 import com.avocarrot.adapters.sample.R;
 import com.avocarrot.adapters.sample.ScreenAdType;
+import com.avocarrot.sdk.Avocarrot;
+import com.mopub.common.MoPub;
+import com.mopub.common.SdkConfiguration;
+import com.mopub.common.SdkInitializationListener;
 
 public class MopubConfigActivity extends AppCompatActivity {
     @NonNull
@@ -86,8 +91,24 @@ public class MopubConfigActivity extends AppCompatActivity {
             adUnitIdView.setError(getString(R.string.error_field_required));
             adUnitIdView.requestFocus();
         } else {
-            IntentStarter.startMopubAdTypeActivity(this, adTypeScreen, adUnitId);
-            finish();
+            Avocarrot.setDebugMode(true);
+            if (MoPub.isSdkInitialized()) {
+                IntentStarter.startMopubAdTypeActivity(this, adTypeScreen, adUnitId);
+                finish();
+            } else {
+                SdkConfiguration sdkConfiguration = new SdkConfiguration.Builder(adUnitId).build();
+                MoPub.initializeSdk(this, sdkConfiguration, initSdkListener(this, adTypeScreen, adUnitId));
+            }
         }
+    }
+
+    private SdkInitializationListener initSdkListener(final Activity activity, final int adTypeScreen, final String adUnitId) {
+        return new SdkInitializationListener() {
+            @Override
+            public void onInitializationFinished() {
+                IntentStarter.startMopubAdTypeActivity(activity, adTypeScreen, adUnitId);
+                finish();
+            }
+        };
     }
 }
